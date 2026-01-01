@@ -2,3 +2,23 @@
 
 This is a repository for all the plugins i've made.
 Everything here is fully public and free to use, or modify to the license specs.
+(readme was updated on site, idk why i cant push a readme update but we ball)
+
+## XVI State machines
+
+A rather simple standalone state machine plugin.
+
+### State Machine Lite
+
+A simplistic int based state machine. Check the current state, do stuff,
+change the state int and it'll emit some state related signals.
+
+Both a GDScript and Csharp version are provided.
+
+### Node Based State Machine
+
+A Simple node based state machine. Seperate all your states into nodes,
+and have all the functionality nodes provide. The abstract base state should be
+extended to make your states machine compatible.
+
+Both a GDScript and Csharp version are provided.
