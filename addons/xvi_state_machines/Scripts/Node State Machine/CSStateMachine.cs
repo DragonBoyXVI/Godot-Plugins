@@ -6,6 +6,7 @@ namespace DragonXVI.StateMachines;
 /// <summary>
 /// A root node based state machine.
 /// </summary>
+[GlobalClass]
 public partial class CSStateMachine : Node
 {
     /// <summary>
