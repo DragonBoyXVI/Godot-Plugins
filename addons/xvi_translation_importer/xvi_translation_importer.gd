@@ -2,21 +2,14 @@
 extends EditorPlugin
 
 
-func _enable_plugin() -> void:
-	# Add autoloads here.
-	pass
-
-
-func _disable_plugin() -> void:
-	# Remove autoloads here.
-	pass
+const TRANS_IMPORTER_SCRIPT := "res://addons/xvi_translation_importer/Scripts/translation_importer.gd"
+const TRANS_IMPORTER_NAME := "TranslationImporter"
 
 
 func _enter_tree() -> void:
-	# Initialization of the plugin goes here.
-	pass
-
+	
+	add_autoload_singleton( TRANS_IMPORTER_NAME, TRANS_IMPORTER_SCRIPT )
 
 func _exit_tree() -> void:
-	# Clean-up of the plugin goes here.
-	pass
+	
+	remove_autoload_singleton( TRANS_IMPORTER_NAME )
