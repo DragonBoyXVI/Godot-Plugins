@@ -22,3 +22,17 @@ and have all the functionality nodes provide. The abstract base state should be
 extended to make your states machine compatible.
 
 Both a GDScript and Csharp version are provided.
+
+## Translation Importer
+
+Godots usual translation system is a bit... meh in my opinion.
+This addon adds a few more convinences to using translations, such as storing them
+in JSON and allowing other types of data in them.
+
+### User defined translations
+
+This addon also lets you easily and safely allow players to add their own translations
+to your project or game. 
+Custom translations can overwrite offical translations, but they
+cannot screw up offcial translations, as no files are ever written to,
+and the custom translations can simply be deleted by the user.
