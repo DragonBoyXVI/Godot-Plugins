@@ -2,7 +2,6 @@
 
 This is a repository for all the plugins i've made.
 Everything here is fully public and free to use, or modify to the license specs.
-(readme was updated on site, idk why i cant push a readme update but we ball)
 
 ## XVI State machines
 
