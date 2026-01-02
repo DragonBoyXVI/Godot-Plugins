@@ -2,5 +2,9 @@
 	"locale": "es",
 	"key_message_one": "HELLO IN SPANSH!",
 	"key_message_two": "I LOVE MY MEXICO<3",
-	"key_some_array": [ "Chinese", "jamacan", "or korean" ],
+	"key_some_array": [
+		"Chinese",
+		"jamacan",
+		"or korean"
+	]
 }

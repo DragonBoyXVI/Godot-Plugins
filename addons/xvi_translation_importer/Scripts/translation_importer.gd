@@ -27,7 +27,7 @@ func get_extra_data( key: String, locale: String = TranslationServer.get_locale(
 	return data[ key ]
 
 
-## Loads a file and parses it as text.
+## Loads a file and parses it as text, can be a file inside the "res" or outside.[br]
 ## if the file is a json that contains a valid dictionary, it gets parsed
 ## as a translation. Otherwise an error is printed and nothing happens.
 ## The dictionary is parsed via "parse_dict_to_translation"

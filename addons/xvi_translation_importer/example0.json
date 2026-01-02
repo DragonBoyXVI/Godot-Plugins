@@ -2,5 +2,9 @@
 	"locale": "en",
 	"key_message_one": "HELLO IN ENGLISH!",
 	"key_message_two": "I LOVE MY WIFE<3",
-	"key_some_array": [ "gay", "lesbain", "faggot" ],
+	"key_some_array": [
+		"gay",
+		"lesbain",
+		"faggot"
+	]
 }
