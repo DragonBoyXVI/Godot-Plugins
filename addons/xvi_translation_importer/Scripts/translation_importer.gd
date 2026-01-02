@@ -17,7 +17,11 @@ func get_extra_data( key: String, locale: String = TranslationServer.get_locale(
 		return null
 	
 	var data: Dictionary = _extra_data[ locale ]
-	return null
+	if ( not data.has( key ) ):
+		push_error( "Getting extra data that we dont have! ", locale, " ", key )
+		return null
+	
+	return data[ key ]
 
 
 ## Parses the provided dictionary into a translation,
