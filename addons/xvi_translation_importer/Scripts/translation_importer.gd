@@ -10,6 +10,9 @@ const LOCALE_CHECK := "locale"
 var _extra_data: Dictionary[ String, Dictionary ] = {}
 
 
+## This node stores any extra data that cant be stored in a translation.
+## For example, your json can contain an array of strings, and this will
+## store that here for you to grab later.
 func get_extra_data( key: String, locale: String = TranslationServer.get_locale() ) -> Variant:
 	
 	if ( not _extra_data.has( locale ) ):
@@ -23,6 +26,35 @@ func get_extra_data( key: String, locale: String = TranslationServer.get_locale(
 	
 	return data[ key ]
 
+
+## Loads a file and parses it as text.
+## if the file is a json that contains a valid dictionary, it gets parsed
+## as a translation. Otherwise an error is printed and nothing happens.
+## The dictionary is parsed via "parse_dict_to_translation"
+func parse_file_for_dict( path: String ) -> void:
+	
+	if ( not FileAccess.file_exists( path ) ):
+		push_error( "Trying to translate a file that doesnt exist! ", path )
+		return
+	
+	var file := FileAccess.open( path, FileAccess.READ )
+	if ( not file ):
+		push_error( "Translation file open error! Path: ", path, " Error: ", error_string( FileAccess.get_open_error() ) )
+		return
+	
+	var file_string: String = file.get_as_text()
+	var json_parsed: Variant = JSON.parse_string( file_string )
+	if ( json_parsed == null ):
+		push_error( "Translation file json parse failed! ", path )
+		return
+	
+	if ( typeof( json_parsed ) == TYPE_DICTIONARY ):
+		
+		parse_dict_to_translation( json_parsed )
+	else:
+		
+		push_error( "Translation file parsed, but the parsed type was not a Dictionary! ", path )
+		return
 
 ## Parses the provided dictionary into a translation,
 ## and adds it to the [TranslationServer].[br]
