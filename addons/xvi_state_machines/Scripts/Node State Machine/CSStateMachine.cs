@@ -6,7 +6,7 @@ namespace DragonXVI.StateMachines;
 /// <summary>
 /// A root node based state machine.
 /// </summary>
-[GlobalClass]
+[GlobalClass, Icon("res://addons/xvi_state_machines/Icons/machine.atlastex")]
 public partial class CSStateMachine : Node
 {
     /// <summary>

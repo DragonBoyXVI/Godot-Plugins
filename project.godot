@@ -14,17 +14,13 @@ config/name="Godot Plugins"
 config/features=PackedStringArray("4.5", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[autoload]
-
-TranslationImporter="*res://addons/xvi_translation_importer/Scripts/translation_importer.gd"
-
 [dotnet]
 
 project/assembly_name="Godot Plugins"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/xvi_translation_importer/plugin.cfg")
+enabled=PackedStringArray("res://addons/xvi_state_machines/plugin.cfg")
 
 [rendering]
 

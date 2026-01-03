@@ -5,7 +5,7 @@ namespace DragonXVI.StateMachines;
 /// <summary>
 /// The base node for CSStates, to be used by a parent state machine.
 /// </summary>
-[GlobalClass]
+[GlobalClass, Icon("res://addons/xvi_state_machines/Icons/state.atlastex")]
 public abstract partial class CSState : Node
 {
     /// <summary>

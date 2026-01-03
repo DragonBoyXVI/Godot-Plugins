@@ -1,3 +1,4 @@
+@icon( "res://addons/xvi_state_machines/Icons/simple.atlastex" )
 extends RefCounted
 class_name StateMachineLite
 ## A [RefCounted] based state machine.
