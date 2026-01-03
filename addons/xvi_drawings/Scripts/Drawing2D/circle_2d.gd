@@ -29,7 +29,10 @@ func _draw() -> void:
 		return
 	
 	if ( draw_flags & FLAG_DRAW_OUTLINE ):
-		RenderingServer.canvas_item_add_circle( drawing_rid, offset, radius + outline_thickness, outline_color )
+		RenderingServer.canvas_item_add_circle( drawing_rid, offset, radius + ( outline_thickness * 0.5 ), outline_color )
 	
 	if ( draw_flags & FLAG_DRAW_CENTER ):
-		RenderingServer.canvas_item_add_circle( drawing_rid, offset, radius, center_color )
+		var radius_mod := radius
+		if ( draw_flags & FLAG_DRAW_OUTLINE ):
+			radius_mod -= outline_thickness * 0.5
+		RenderingServer.canvas_item_add_circle( drawing_rid, offset, radius_mod, center_color )
