@@ -1,18 +1,26 @@
 @tool
 extends Drawing2D
 class_name Rectangle2D
+## draws a rectangle to the screen.
+##
+## Simple rectiod, sqare even...
 
 
+## Size of the rectangle
 @export var size: Vector2 = Vector2( 32.0, 32.0 ):
 	set( new ):
 		
 		size = new.max( Vector2.ONE )
 		queue_redraw()
+## rectagle offset.
+## If from_center is true, this is from the center,
+## else its from the top left corner.
 @export var offset: Vector2 = Vector2.ZERO:
 	set( new ):
 		
 		offset = new
 		queue_redraw()
+## if turned off, the rectangle is drawn from the top left corner.
 @export var from_center: bool = true:
 	set( new ):
 		
