@@ -20,7 +20,7 @@ project/assembly_name="Godot Plugins"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/xvi_state_machines/plugin.cfg")
+enabled=PackedStringArray("res://addons/xvi_drawings/plugin.cfg")
 
 [rendering]
 
