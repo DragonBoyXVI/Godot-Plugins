@@ -40,3 +40,8 @@ and the custom translations can simply be deleted by the user.
 
 This addon is GDScript focused, a minimal helper script is provided but youll
 have to treat it like any other autoload.
+
+## Drawings
+
+Mostly an asset pack with some simple shaders, also defines a few draw shape nodes
+bc i felt like it. If you just want the shaders, you can delete everything else.
