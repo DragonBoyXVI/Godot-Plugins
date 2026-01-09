@@ -38,11 +38,17 @@ public partial class CSStateMachine : Node
         Godot.Collections.Array<Node> children = GetChildren();
         for (int i = 0; i < children.Count; i++)
         {
-            if ( children[i] is CSState state)
+            if (children[i] is CSState state)
             {
                 RegisterState(state);
             }
         }
+        
+        if (InitialState != null)
+        {
+            ChangeState(InitialState.Name);
+        }        
+        
     }
 
     /// <summary>

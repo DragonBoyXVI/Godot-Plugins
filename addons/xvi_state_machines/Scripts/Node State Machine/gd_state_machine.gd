@@ -28,6 +28,9 @@ func _ready() -> void:
 	for child: Node in children:
 		if ( child is GDState ):
 			register_state( child )
+	
+	if ( initial_state ):
+		change_state( initial_state.name )
 
 
 ## Used to ready a state for usage in the ready func
