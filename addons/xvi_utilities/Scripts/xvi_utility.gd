@@ -20,11 +20,11 @@ const Direction2D: Dictionary[ String, float ]  = {
 
 ## Property detials as returned by a get_propery_list() call.
 ## You prop wont need to use these, but i do lol.
-const Property: Dictionary[ String, Variant ] = {
-	"NAME": "name",
-	"CLASS_NAME": "class_name",
-	"TYPE": "type",
-	"HINT": "hint",
-	"HINT_STRING": "hint_string",
-	"USAGE": "usage",
+const Property: Dictionary[ String, StringName ] = {
+	"NAME": &"name",
+	"CLASS_NAME": &"class_name",
+	"TYPE": &"type",
+	"HINT": &"hint",
+	"HINT_STRING": &"hint_string",
+	"USAGE": &"usage",
 }

@@ -1,7 +1,7 @@
 @abstract
 @tool
 extends Area2D;
-class_name StrippedArea2D;
+class_name StrippedArea2DGD;
 ## An [Area2D] with some properties disabled, so that they can be enabled
 ## in code instead.
 ##

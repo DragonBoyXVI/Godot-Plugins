@@ -45,3 +45,7 @@ have to treat it like any other autoload.
 
 Mostly an asset pack with some simple shaders, also defines a few draw shape nodes
 bc i felt like it. If you just want the shaders, you can delete everything else.
+
+## XVI Utility
+
+A utility plugin catered to the things i usually tend to do.
