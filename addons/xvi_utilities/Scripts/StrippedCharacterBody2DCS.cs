@@ -22,9 +22,9 @@ public abstract partial class StrippedCharacterBody2DCS : CharacterBody2D
 	{
 		base._ValidateProperty(property);
 
-		if (DisabledProperties.Contains( (string)property[Utility.Property.Name] ))
+		if (DisabledProperties.Contains( (string)property[PropertyDetail.Name] ))
 		{
-			property[Utility.Property.Usage] = (long)PropertyUsageFlags.None;
+			property[PropertyDetail.Usage] = (long)PropertyUsageFlags.None;
 		}
 	}
 

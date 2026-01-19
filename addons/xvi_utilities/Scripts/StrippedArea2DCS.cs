@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Runtime.InteropServices.Marshalling;
 using Godot;
 using Godot.Collections;
 
@@ -20,17 +21,36 @@ public abstract partial class StrippedArea2DCS : Area2D
 		CollisionLayer = 0;
 		CollisionMask = 0;
 		InputPickable = false;
+
+		if ( Engine.IsEditorHint())
+		{
+			ChildEnteredTree += _OnChildEnteredTree;
+		}
 	}
 
 	public override void _ValidateProperty(Dictionary property)
 	{
 		base._ValidateProperty(property);
 
-		if (DisabledProperties.Contains( (string)property[Utility.Property.Name] ))
+		if (DisabledProperties.Contains((string)property[PropertyDetail.Name]))
 		{
-			property[Utility.Property.Usage] = (long)PropertyUsageFlags.None;
+			property[PropertyDetail.Usage] = (long)PropertyUsageFlags.None;
 		}
 	}
+
+	public virtual void _OnChildEnteredTree(Node node)
+	{
+		if ( node is CollisionShape2D )
+		{
+			_ShapeEnteredTree((CollisionShape2D)node);
+		}
+	}
+	/// <summary>
+	/// Shortcut for when a [CollisionShape] enters the tree in the editor.
+	/// I like to use this to automatically change the debug color.
+	/// </summary>
+	/// <param name="shape">The new [CollisionShape].</param>
+	public virtual void _ShapeEnteredTree(CollisionShape2D shape) { GD.Print("IT Works =3"); }
 
 	private static readonly string[] DisabledProperties = [
 		Area2D.PropertyName.Monitoring,

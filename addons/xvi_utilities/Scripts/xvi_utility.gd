@@ -6,6 +6,17 @@ class_name XVIUtility;
 ## Not meant to be instanced, so dont lol
 
 
+## Bitflags for the elemental system i use
+enum Element {
+	None = 0,
+	Fire = 1<<0,
+	Ice = 1<<1,
+	Venom = 1<<2,
+	Life = 1<<3,
+	Elec = 1<<4,
+}
+
+
 ## Radian angles for cardinal and diagnal directions in 2D.
 const Direction2D: Dictionary[ String, float ]  = {
 	"RIGHT": 0.0,

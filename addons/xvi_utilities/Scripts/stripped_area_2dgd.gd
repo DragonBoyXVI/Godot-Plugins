@@ -17,6 +17,9 @@ func _init() -> void:
 	collision_layer = 0;
 	collision_mask = 0;
 	input_pickable = false;
+	
+	if ( Engine.is_editor_hint() ):
+		child_entered_tree.connect( _on_child_entered_tree );
 
 func _validate_property( property: Dictionary ) -> void:
 	const DISABLED: PackedStringArray = [
@@ -29,3 +32,17 @@ func _validate_property( property: Dictionary ) -> void:
 	
 	if ( DISABLED.has( property[ XVIUtility.Property.NAME ] ) ):
 		property[ XVIUtility.Property.USAGE ] = PROPERTY_USAGE_NONE;
+
+
+## Runs in the editor only.
+## is used for the _shape_entered_tree call.
+func _on_child_entered_tree( node: Node ) -> void:
+	
+	if ( node is CollisionShape2D ):
+		_shape_entered_tree( node );
+
+## Virtual[br]
+## Shortcut for when a [CollisionShape] child enters the tree.
+## I like to use this to change the debug color automatically.
+func _shape_entered_tree( _shape: CollisionShape2D ) -> void:
+	pass

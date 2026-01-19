@@ -48,4 +48,11 @@ bc i felt like it. If you just want the shaders, you can delete everything else.
 
 ## XVI Utility
 
-A utility plugin catered to the things i usually tend to do.
+A utility plugin catered to the things i usually tend to do. Along with some
+node classes catered in the same manner.
+
+### Stripped Nodes
+
+Stripped nodes remove some properties in favor of changing them via code intsead,
+making the editor less cluttered in favor of a code base approach instead.
+Feel free to personalize your stripped nodes more by editing the source or extending the class.
