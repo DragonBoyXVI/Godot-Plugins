@@ -8,10 +8,15 @@ shader_type canvas_item;
 
 uniform sampler2D palette_texture: filter_nearest;
 
+varying vec4 modulate;
+
+void vertex(){
+	modulate = COLOR;
+}
+
 void fragment() {
 	// get modulate color
 	vec4 base_color = texture( TEXTURE, UV );
-	vec4 modulate = COLOR / base_color;
 	
 	vec4 palette_color = texture( palette_texture, vec2( base_color.r, 0.5  ) );
 	COLOR = vec4( palette_color.rgb, base_color.a ) * modulate;

@@ -7,11 +7,17 @@ shader_type canvas_item;
 uniform sampler2D cutout_texture: filter_nearest;
 uniform vec3 replacement_color: source_color;
 
+varying vec4 modulate;
+
+
+void vertex() {
+	modulate = COLOR;
+}
+
 void fragment() {
 	// gets the modulate color
 	vec4 base_color = texture( TEXTURE, UV );
-	vec4 modulate = COLOR / base_color;
-	
+
 	float cutout_value = texture( cutout_texture, UV ).r;
 	vec3 mixed_color = mix( base_color.rgb, replacement_color, cutout_value );
 	COLOR = vec4( mixed_color, base_color.a ) * modulate;
