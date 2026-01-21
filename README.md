@@ -3,24 +3,33 @@
 This is a repository for all the plugins i've made.
 Everything here is fully public and free to use, or modify to the license specs.
 
-## XVI State machines
 
-A rather simple standalone state machine plugin.
+## XVI Utility
 
-### State Machine Lite
+A condensed utility plugin that provides some scripts suited for quirks and 
+tricks i usually do. Minimally invasive and you can delete and scripts that you
+do not need.
 
-A simplistic int based state machine. Check the current state, do stuff,
-change the state int and it'll emit some state related signals.
+### Drawing nodes
 
-Both a GDScript and Csharp version are provided.
+Simple shape drawing nodes i made for fun, can be useful for 2D models.
+Also provides an asset folder with canvas shaders.
+All made in GDScript.
 
-### Node Based State Machine
+### State Machines
 
-A Simple node based state machine. Seperate all your states into nodes,
-and have all the functionality nodes provide. The abstract base state should be
-extended to make your states machine compatible.
+A node based state machine and a ref counted one. Easy to build onto and provides
+some common functionality.
+Made in both GDScript and CSharp.
 
-Both a GDScript and Csharp version are provided.
+### Stripped Nodes
+
+Some nodes i commonly strip exported properties from. Good for if you like 
+setting these properties in code like me.
+Currently only strips Area2D and CharacterBody2D, taking away exported collison
+in favor of the code based approach.
+Made in both GDScript and CSharp.
+
 
 ## Translation Importer
 
@@ -40,19 +49,3 @@ and the custom translations can simply be deleted by the user.
 
 This addon is GDScript focused, a minimal helper script is provided but youll
 have to treat it like any other autoload.
-
-## Drawings
-
-Mostly an asset pack with some simple shaders, also defines a few draw shape nodes
-bc i felt like it. If you just want the shaders, you can delete everything else.
-
-## XVI Utility
-
-A utility plugin catered to the things i usually tend to do. Along with some
-node classes catered in the same manner.
-
-### Stripped Nodes
-
-Stripped nodes remove some properties in favor of changing them via code intsead,
-making the editor less cluttered in favor of a code base approach instead.
-Feel free to personalize your stripped nodes more by editing the source or extending the class.

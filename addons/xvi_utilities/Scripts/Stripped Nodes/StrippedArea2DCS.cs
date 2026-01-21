@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Runtime.InteropServices.Marshalling;
 using Godot;
 using Godot.Collections;
 
@@ -50,7 +49,7 @@ public abstract partial class StrippedArea2DCS : Area2D
 	/// I like to use this to automatically change the debug color.
 	/// </summary>
 	/// <param name="shape">The new [CollisionShape].</param>
-	public virtual void _ShapeEnteredTree(CollisionShape2D shape) { GD.Print("IT Works =3"); }
+	public virtual void _ShapeEnteredTree(CollisionShape2D shape) {  }
 
 	private static readonly string[] DisabledProperties = [
 		Area2D.PropertyName.Monitoring,

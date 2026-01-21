@@ -1,12 +1,12 @@
 using System.Collections.Generic;
 using Godot;
 
-namespace DragonXVI.StateMachines;
+namespace DragonXVI;
 
 /// <summary>
 /// A root node based state machine.
 /// </summary>
-[GlobalClass, Icon("res://addons/xvi_state_machines/Icons/machine.atlastex")]
+[GlobalClass, Icon("res://addons/xvi_utilities/Assets/Script Icons/state_machine_node.atlastex")]
 public partial class CSStateMachine : Node
 {
     /// <summary>

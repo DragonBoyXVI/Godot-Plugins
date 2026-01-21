@@ -4,7 +4,7 @@ using Godot;
 
 namespace DragonXVI;
 
-[GlobalClass,Tool]
+[/*GlobalClass,*/Tool]
 public partial class ElementCS : Resource
 {
 	public ElementCS() { }

@@ -1,20 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://brx863q7ph81p"]
+[gd_scene load_steps=13 format=3 uid="uid://brx863q7ph81p"]
 
 [ext_resource type="Texture2D" uid="uid://b1fcj1qdch5bt" path="res://icon.svg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://nhuto6cgu07o" path="res://node_2d.gd" id="1_0hol4"]
-[ext_resource type="Shader" uid="uid://bit1t22ciih3f" path="res://addons/xvi_drawings/Shaders/palette_canvas_group.gdshader" id="2_epypp"]
-[ext_resource type="Script" uid="uid://cqyjyedgw71cf" path="res://addons/xvi_utilities/Scripts/element_gd.gd" id="2_q6r6c"]
-[ext_resource type="Shader" uid="uid://i70wcdmyjgo" path="res://addons/xvi_drawings/Shaders/palette_on_grayscale.gdshader" id="3_epypp"]
-
-[sub_resource type="Resource" id="Resource_kdubu"]
-script = ExtResource("2_q6r6c")
-current_element = 31
-metadata/_custom_type_script = "uid://cqyjyedgw71cf"
-
-[sub_resource type="Resource" id="Resource_d21ai"]
-script = ExtResource("2_q6r6c")
-current_element = 31
-metadata/_custom_type_script = "uid://cqyjyedgw71cf"
+[ext_resource type="Shader" uid="uid://bit1t22ciih3f" path="res://addons/xvi_utilities/Assets/Shaders/palette_canvas_group.gdshader" id="2_epypp"]
+[ext_resource type="Shader" uid="uid://i70wcdmyjgo" path="res://addons/xvi_utilities/Assets/Shaders/palette_on_grayscale.gdshader" id="3_epypp"]
 
 [sub_resource type="Gradient" id="Gradient_0hol4"]
 colors = PackedColorArray(1, 0, 0, 1, 0, 1, 1, 1)
@@ -43,8 +32,6 @@ shader_parameter/palette_texture = SubResource("GradientTexture1D_q6r6c")
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_0hol4")
-elemgd1 = SubResource("Resource_kdubu")
-elemgd2 = SubResource("Resource_d21ai")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(290, -149)

@@ -1,6 +1,6 @@
 using Godot;
 
-namespace DragonXVI.StateMachines;
+namespace DragonXVI;
 
 /// <summary>
 /// Simple match based state machine wrapper.

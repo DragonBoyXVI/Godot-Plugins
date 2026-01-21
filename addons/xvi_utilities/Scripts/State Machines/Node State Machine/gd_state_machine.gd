@@ -1,4 +1,4 @@
-@icon( "res://addons/xvi_state_machines/Icons/machine.atlastex" )
+@icon( "res://addons/xvi_utilities/Assets/Script Icons/state_machine_node.atlastex" )
 extends Node
 class_name GDStateMachine
 ## A GDScript based state machine

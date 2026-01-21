@@ -1,11 +1,11 @@
 using Godot;
 
-namespace DragonXVI.StateMachines;
+namespace DragonXVI;
 
 /// <summary>
 /// The base node for CSStates, to be used by a parent state machine.
 /// </summary>
-[GlobalClass, Icon("res://addons/xvi_state_machines/Icons/state.atlastex")]
+[GlobalClass, Icon("res://addons/xvi_utilities/Assets/Script Icons/state_node.atlastex")]
 public abstract partial class CSState : Node
 {
     /// <summary>

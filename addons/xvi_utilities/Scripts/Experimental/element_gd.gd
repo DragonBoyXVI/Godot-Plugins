@@ -1,7 +1,7 @@
 @tool
 #@static_unload
 extends Resource
-class_name ElementGD
+#class_name ElementGD
 
 
 enum Bits {
@@ -88,7 +88,7 @@ const TABLE: Dictionary[ int, Dictionary ] = {
 
 
 var current_element: int = Bits.NONE;
-
+@export var test: PackedByteArray;
 
 func _init( elem: Bits = Bits.NONE ) -> void:
 	current_element = elem;
@@ -114,23 +114,23 @@ static func remap_strength( strength: int, from: float, to: float ) -> float:
 	return remap( strength, -5.0, 5.0, from, to );
 
 
-func get_strength_against( defending_element: ElementGD ) -> int:
-	
-	var cache_key = make_cache_key( current_element, defending_element.current_element );
-	if ( _cache.has( cache_key ) ):
-		return _cache[ cache_key ];
-	
-	var strength_value := 0;
-	for i: int in BIT_COUNT:
-		
-		var atk_elem := 1<<i;
-		if ( current_element & atk_elem ):
-			
-			for j: int in BIT_COUNT:
-				
-				var def_elem := 1<<j;
-				if ( defending_element.current_element & def_elem ):
-					strength_value += TABLE[ atk_elem ][ def_elem ];
-	
-	_cache.set( cache_key, strength_value );
-	return strength_value;
+#func get_strength_against( defending_element: ElementGD ) -> int:
+	#
+	#var cache_key = make_cache_key( current_element, defending_element.current_element );
+	#if ( _cache.has( cache_key ) ):
+		#return _cache[ cache_key ];
+	#
+	#var strength_value := 0;
+	#for i: int in BIT_COUNT:
+		#
+		#var atk_elem := 1<<i;
+		#if ( current_element & atk_elem ):
+			#
+			#for j: int in BIT_COUNT:
+				#
+				#var def_elem := 1<<j;
+				#if ( defending_element.current_element & def_elem ):
+					#strength_value += TABLE[ atk_elem ][ def_elem ];
+	#
+	#_cache.set( cache_key, strength_value );
+	#return strength_value;

@@ -1,5 +1,5 @@
 @abstract
-@icon( "res://addons/xvi_state_machines/Icons/state.atlastex" )
+@icon( "res://addons/xvi_utilities/Assets/Script Icons/state_node.atlastex" )
 extends Node
 class_name GDState
 ## A State node based in GDScript
