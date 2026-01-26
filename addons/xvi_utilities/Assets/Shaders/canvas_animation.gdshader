@@ -18,7 +18,14 @@ uniform float pulse_speed = 1.0;
 uniform float pulse_offset = 0.0;
 uniform vec2 pulse_amplitude = vec2( 0.0 );
 
+group_uniforms PaletteColoring;
+uniform bool palette_enabled = false;
+uniform sampler2D palette_texture;
+
+varying vec4 modulate;
+
 void vertex() {
+	modulate = COLOR;
 	float time = ( TIME + time_offset ) * speed;
 	
 	//rotate
@@ -37,4 +44,13 @@ void vertex() {
 	vec2 pulse_vector = vec2( 1.0 );
 	pulse_vector.xy += sin( pulse_time ) * pulse_amplitude;
 	VERTEX.xy *= pulse_vector;
+}
+
+void fragment(){
+	if ( palette_enabled ) {
+		vec4 base_color = texture( TEXTURE, UV );
+		
+		vec4 palette_color = texture( palette_texture, vec2( base_color.r, 0.5  ) );
+		COLOR = vec4( palette_color.rgb, base_color.a ) * modulate;
+	}
 }
