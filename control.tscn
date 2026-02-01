@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ixipmiy8vckj"]
+
+[ext_resource type="Script" uid="uid://g6w2rufxyd67" path="res://control.gd" id="1_0fbet"]
+
+[node name="Control" type="Control" unique_id=593086047]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0fbet")
+
+[node name="Panel" type="Panel" parent="." unique_id=610613353]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 190.0
+offset_right = 628.0
+offset_bottom = 383.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Button" type="Button" parent="." unique_id=1803522018]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 260.0
+offset_right = 534.0
+offset_bottom = 291.0
+text = "Click Me!"
