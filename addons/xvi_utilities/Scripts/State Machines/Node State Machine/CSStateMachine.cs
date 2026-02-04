@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 namespace DragonXVI;
@@ -6,7 +7,7 @@ namespace DragonXVI;
 /// <summary>
 /// A root node based state machine.
 /// </summary>
-[GlobalClass, Icon("res://addons/xvi_utilities/Assets/Script Icons/state_machine_node.atlastex")]
+[GlobalClass, Tool, Icon("res://addons/xvi_utilities/Assets/Script Icons/state_machine_node.atlastex")]
 public partial class CSStateMachine : Node
 {
     /// <summary>
@@ -26,14 +27,23 @@ public partial class CSStateMachine : Node
     /// The state this switches to when readied.
     /// </summary>
     [Export]
-    public CSState InitialState;
-
+	public CSState InitialState
+	{
+        get { return _InitialState; }
+        set { _InitialState = value; UpdateConfigurationWarnings(); }
+    }
+    private CSState _InitialState;
     public CSState CurrentState;
     private readonly Dictionary<StringName, CSState> StateCache = [];
 
     public override void _Ready()
     {
         base._Ready();
+
+        if ( Engine.IsEditorHint() )
+        {
+            XVIUtil.DisableNodeProcesses(this);
+        }
 
         Godot.Collections.Array<Node> children = GetChildren();
         for (int i = 0; i < children.Count; i++)
@@ -44,11 +54,23 @@ public partial class CSStateMachine : Node
             }
         }
         
-        if (InitialState != null)
+        if (_InitialState != null)
         {
-            ChangeState(InitialState.Name);
+            ChangeState(_InitialState.Name);
         }        
         
+    }
+
+    public override string[] _GetConfigurationWarnings()
+    {
+        List<string> warnings = [];
+
+        if (_InitialState == null)
+        {
+            warnings.Add("No initial state set! Without one, this machine will not work unless set via some other means.");
+        }
+
+        return [.. warnings];
     }
 
     /// <summary>

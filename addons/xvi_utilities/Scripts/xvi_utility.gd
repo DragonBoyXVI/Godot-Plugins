@@ -1,6 +1,6 @@
 @abstract
 extends Object;
-class_name XVIUtility;
+#class_name XVIUtility;
 ## A GLobal class that holds utility constants and functions.
 ##
 ## Not meant to be instanced, so dont lol

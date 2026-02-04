@@ -23,5 +23,5 @@ func _validate_property( property: Dictionary ) -> void:
 		^"collision_mask",
 	];
 	
-	if ( DISABLED.has( property[ XVIUtility.Property.NAME ] ) ):
-		property[ XVIUtility.Property.USAGE ] = PROPERTY_USAGE_NONE;
+	if ( DISABLED.has( property[ Property.NAME ] ) ):
+		property[ Property.USAGE ] = PROPERTY_USAGE_NONE;
