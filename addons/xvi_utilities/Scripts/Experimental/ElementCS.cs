@@ -51,8 +51,19 @@ public partial class ElementCS : Resource
 		return properties;
 	}
 
+	public static string MakeCacheKey( Bits elem1, Bits elem2)
+	{
+		return elem1.ToString() + ":" + elem2.ToString();
+	}
+
 	public int GetStrengthAgainst(ElementCS defendingElement)
 	{
+		string cacheKey = MakeCacheKey(CurrentElement, defendingElement.CurrentElement);
+		if ( Cache.TryGetValue(cacheKey, out int value))
+		{
+			return value;
+		}
+
 		return 0;
 	}
 }

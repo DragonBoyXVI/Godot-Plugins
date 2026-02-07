@@ -1,7 +1,7 @@
 @tool
 #@static_unload
-extends Resource
-#class_name ElementGD
+extends Resource;
+class_name ElementGD;
 
 
 enum Bits {
@@ -28,7 +28,6 @@ const VENOM := Bits.VENOM;
 const LIFE := Bits.LIFE;
 const ELEC := Bits.ELEC;
 const _SUMMARY_PATH := "res://elementgd_summary.txt"
-
 
 
 static var _cache: Dictionary[ String, int ] = {};
@@ -88,7 +87,12 @@ const TABLE: Dictionary[ int, Dictionary ] = {
 
 
 var current_element: int = Bits.NONE;
-@export var test: PackedByteArray;
+
+
+static func make_cache_key( elem1: Bits, elem2: Bits ) -> String:
+	const format := "{0}:{1}";
+	return format.format( [ elem1, elem2 ] );
+
 
 func _init( elem: Bits = Bits.NONE ) -> void:
 	current_element = elem;
@@ -97,40 +101,32 @@ func _get_property_list() -> Array[ Dictionary ]:
 	var properties: Array[ Dictionary ] = [];
 	
 	properties.append( {
-		XVIUtility.Property.NAME: "current_element",
-		XVIUtility.Property.TYPE: TYPE_INT,
-		XVIUtility.Property.HINT: PROPERTY_HINT_FLAGS,
-		XVIUtility.Property.HINT_STRING: BITS_STRING,
+		Property.NAME: "current_element",
+		Property.TYPE: TYPE_INT,
+		Property.HINT: PROPERTY_HINT_FLAGS,
+		Property.HINT_STRING: BITS_STRING,
 	} );
 	
 	return properties;
 
 
-static func make_cache_key( elem1: Bits, elem2: Bits ) -> String:
-	const format := "{0}:{1}";
-	return format.format( [ elem1, elem2 ] );
-
-static func remap_strength( strength: int, from: float, to: float ) -> float:
-	return remap( strength, -5.0, 5.0, from, to );
-
-
-#func get_strength_against( defending_element: ElementGD ) -> int:
-	#
-	#var cache_key = make_cache_key( current_element, defending_element.current_element );
-	#if ( _cache.has( cache_key ) ):
-		#return _cache[ cache_key ];
-	#
-	#var strength_value := 0;
-	#for i: int in BIT_COUNT:
-		#
-		#var atk_elem := 1<<i;
-		#if ( current_element & atk_elem ):
-			#
-			#for j: int in BIT_COUNT:
-				#
-				#var def_elem := 1<<j;
-				#if ( defending_element.current_element & def_elem ):
-					#strength_value += TABLE[ atk_elem ][ def_elem ];
-	#
-	#_cache.set( cache_key, strength_value );
-	#return strength_value;
+func get_strength_against( defending_element: ElementGD ) -> int:
+	
+	var cache_key = make_cache_key( current_element, defending_element.current_element );
+	if ( _cache.has( cache_key ) ):
+		return _cache[ cache_key ];
+	
+	var strength_value := 0;
+	for i: int in BIT_COUNT:
+		
+		var atk_elem := 1<<i;
+		if ( current_element & atk_elem ):
+			
+			for j: int in BIT_COUNT:
+				
+				var def_elem := 1<<j;
+				if ( defending_element.current_element & def_elem ):
+					strength_value += TABLE[ atk_elem ][ def_elem ];
+	
+	_cache.set( cache_key, strength_value );
+	return strength_value;
