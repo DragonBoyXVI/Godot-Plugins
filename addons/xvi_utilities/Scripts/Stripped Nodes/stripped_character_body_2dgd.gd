@@ -1,7 +1,7 @@
 @abstract
 @tool
 extends CharacterBody2D;
-class_name StrippedCharacterBodyGD;
+class_name StrippedCharacterBody2DGD;
 ## A [CharacterBody2D] with some properties disabled, so that they can be enabled
 ## in code instead.
 ##
