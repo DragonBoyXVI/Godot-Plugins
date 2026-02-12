@@ -21,12 +21,68 @@ public static class Direction2D
 /// </summary>
 public static class PropertyDetail
 {
+ 	/// <summary>
+	/// Name of propety as it appears in code.
+	/// </summary>
 	public static readonly StringName Name = new("name");
+	/// <summary>
+	/// String name of the BUILT IN class. But only if the property is a type object.
+	/// </summary>
 	public static readonly StringName ClassName = new("class_name");
+	/// <summary>
+	/// The Variant.Type of this property.
+	/// </summary>
 	public static readonly StringName Type = new("type");
+	/// <summary>
+	/// Determines how the editor displays and edits this property.
+	/// </summary>
 	public static readonly StringName Hint = new("hint");
+	/// <summary>
+	/// Used for the hint.
+	/// </summary>
 	public static readonly StringName HintString = new("hint_string");
+	/// <summary>
+	/// Defines how this property is used. 
+	/// Ex. Is this a category instead of a property?
+	/// </summary>
 	public static readonly StringName Usage = new("usage");
+}
+
+/// <summary>
+/// Constants for the dicts returned by raycasting.
+/// </summary>
+public static class RayDict
+{
+	/// <summary>
+	/// Global position of the collision point.
+	/// </summary>
+	public static readonly StringName Position = new("position");
+	/// <summary>
+	/// Normal vector pointing at the collision point.
+	/// Can be a zero vector if the collision happens inside a shape.
+	/// </summary>
+	public static readonly StringName Normal = new("normal");
+	/// <summary>
+	/// The [GodotObject] this hit, usually a node.
+	/// Can be null if it collides with something made via the physics server.
+	/// </summary>
+	public static readonly StringName Object = new("object");
+	/// <summary>
+	/// Object it collided against (whatever that means...).
+	/// </summary>
+	public static readonly StringName ObjectID = new("object_id");
+	/// <summary>
+	/// The Rid of the hit object.
+	/// </summary>
+	public static readonly StringName RID = new("rid");
+	/// <summary>
+	/// The shape index of the hit collider.
+	/// </summary>
+	public static readonly StringName Shape = new("shape");
+	/// <summary>
+	/// Collider's metadata.
+	/// </summary>
+	public static readonly StringName Metadata = new("metadata");
 }
 
 /// <summary>
