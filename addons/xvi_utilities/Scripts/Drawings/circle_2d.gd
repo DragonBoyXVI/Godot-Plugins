@@ -1,6 +1,6 @@
 @tool
 extends Drawing2D
-class_name Circle2D
+class_name CircleDrawing2D
 ## Draws a circle
 ##
 ## Actually draws two circles since no hollow circle exists lol
@@ -22,17 +22,12 @@ class_name Circle2D
 
 
 func _draw() -> void:
-	
-	RenderingServer.canvas_item_clear( drawing_rid )
-	
 	if ( draw_flags == 0 ):
 		return
 	
-	if ( draw_flags & FLAG_DRAW_OUTLINE ):
-		RenderingServer.canvas_item_add_circle( drawing_rid, offset, radius + ( outline_thickness * 0.5 ), outline_color )
+	var antialiasing := bool( draw_flags & DrawFlag.ANIALIASING );
 	
-	if ( draw_flags & FLAG_DRAW_CENTER ):
-		var radius_mod := radius
-		if ( draw_flags & FLAG_DRAW_OUTLINE ):
-			radius_mod -= outline_thickness * 0.5
-		RenderingServer.canvas_item_add_circle( drawing_rid, offset, radius_mod, center_color )
+	if ( draw_flags & DrawFlag.CENTER ):
+		draw_circle( offset, radius, center_color, true, -1.0, antialiasing );
+	if ( draw_flags & DrawFlag.OUTLINE ):
+		draw_circle( offset, radius, outline_color, false, outline_thickness, antialiasing );

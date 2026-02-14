@@ -1,6 +1,6 @@
 @tool
 extends Drawing2D
-class_name Rectangle2D
+class_name RectangleDrawing2D
 ## draws a rectangle to the screen.
 ##
 ## Simple rectiod, sqare even...
@@ -30,28 +30,13 @@ class_name Rectangle2D
 
 func _draw() -> void:
 	
-	RenderingServer.canvas_item_clear( drawing_rid )
-	
-	var rect := Rect2( offset, size )
+	var antialiasing := bool( draw_flags & DrawFlag.ANIALIASING );
+	var rect := Rect2( offset, size );
 	if ( from_center ):
-		rect.position -= size * 0.5
+		rect.position -= size * 0.5;
 	
-	if ( draw_flags & FLAG_DRAW_CENTER ):
-		RenderingServer.canvas_item_add_rect( drawing_rid, rect, center_color, false )
+	if ( draw_flags & DrawFlag.CENTER ):
+		draw_rect( rect, center_color, true, -1.0,  )
 	
-	if ( draw_flags & FLAG_DRAW_OUTLINE ):
-		
-		var points := PackedVector2Array()
-		points.resize( 5 )
-		# top left
-		points[ 0 ] = Vector2( rect.position )
-		# top right
-		points[ 1 ] = Vector2( rect.position + ( rect.size * Vector2( 1, 0 ) ) )
-		# bottom right
-		points[ 2 ] = Vector2( rect.position + rect.size )
-		# bottom left
-		points[ 3 ] = Vector2( rect.position + ( rect.size * Vector2( 0, 1 ) ) )
-		# close the loop
-		points[ 4 ] = points[ 0 ]
-		
-		RenderingServer.canvas_item_add_polyline( drawing_rid, points, [outline_color], outline_thickness, false )
+	if ( draw_flags & DrawFlag.OUTLINE ):
+		draw_rect( rect, outline_color, false, outline_thickness, antialiasing );
