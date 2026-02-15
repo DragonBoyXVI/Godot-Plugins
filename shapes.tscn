@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://doi5xtjwx1oeh"]
+
+[ext_resource type="Script" uid="uid://caitxas46vmnk" path="res://addons/xvi_utilities/Scripts/Drawings/circle_2d.gd" id="1_1mehd"]
+[ext_resource type="Script" uid="uid://3rdke1wuejq8" path="res://addons/xvi_utilities/Scripts/Drawings/rectangle.gd" id="2_b8e0k"]
+[ext_resource type="Script" uid="uid://bvhn4ekqt2dxo" path="res://addons/xvi_utilities/Scripts/Drawings/perfect_polygon_2d.gd" id="3_12ag0"]
+[ext_resource type="Shader" uid="uid://3rcfvi023ood" path="res://addons/xvi_utilities/Assets/Shaders/canvas_disolve.gdshader" id="4_0q0gk"]
+[ext_resource type="Texture2D" uid="uid://b1fcj1qdch5bt" path="res://icon.svg" id="5_cu2rh"]
+
+[sub_resource type="Gradient" id="Gradient_bxvlv"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rms33"]
+gradient = SubResource("Gradient_bxvlv")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0a4w"]
+shader = ExtResource("4_0q0gk")
+shader_parameter/progress = 0.71999998390656
+shader_parameter/disolve_texture = SubResource("GradientTexture1D_rms33")
+
+[node name="Node2D" type="Node2D" unique_id=1984034376]
+
+[node name="CircleDrawing2D" type="Node2D" parent="." unique_id=1734691455]
+position = Vector2(109, 192)
+script = ExtResource("1_1mehd")
+draw_flags = 3
+metadata/_custom_type_script = "uid://caitxas46vmnk"
+
+[node name="RectangleDrawing2D" type="Node2D" parent="." unique_id=289953598]
+position = Vector2(330, 243)
+script = ExtResource("2_b8e0k")
+draw_flags = 3
+metadata/_custom_type_script = "uid://3rdke1wuejq8"
+
+[node name="PerfectPolygon2D" type="Node2D" parent="." unique_id=592502137]
+position = Vector2(38, 405)
+script = ExtResource("3_12ag0")
+draw_flags = 3
+metadata/_custom_type_script = "uid://bvhn4ekqt2dxo"
+
+[node name="Line2D" type="Line2D" parent="." unique_id=1151597324]
+material = SubResource("ShaderMaterial_i0a4w")
+points = PackedVector2Array(-175, -3, -10, -53, 58, -66, 56, 12, 177, -15)
+width = 41.395
+texture = ExtResource("5_cu2rh")
+texture_mode = 2
