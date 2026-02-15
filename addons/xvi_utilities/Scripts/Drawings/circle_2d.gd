@@ -3,7 +3,7 @@ extends Drawing2D
 class_name CircleDrawing2D
 ## Draws a circle
 ##
-## Actually draws two circles since no hollow circle exists lol
+## Basically draws two circles bc of the outine lol.
 
 
 ## Radius of the circle.

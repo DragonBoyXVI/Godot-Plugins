@@ -3,7 +3,9 @@ extends CircleDrawing2D
 class_name PerfectPolygon2D
 ## Draws a multi point polygon, like pentagons.
 ##
-## increase the points enough and you loop back around to a shitty circle lol
+## Does not provide any of the functionality actual polygon nodes do,
+## this is purely for the shapes themselvs.[br]
+## increase the points enough and you loop back around to a shitty circle lol.
 
 
 ## How many points the polygon has
@@ -15,6 +17,8 @@ class_name PerfectPolygon2D
 
 
 func _draw() -> void:
+	if ( draw_flags == 0 ):
+		return;
 	
 	var point_array: PackedVector2Array = [];
 	point_array.resize( points );

@@ -29,6 +29,8 @@ class_name RectangleDrawing2D
 
 
 func _draw() -> void:
+	if ( draw_flags == 0 ):
+		return;
 	
 	var antialiasing := bool( draw_flags & DrawFlag.ANIALIASING );
 	var rect := Rect2( offset, size );

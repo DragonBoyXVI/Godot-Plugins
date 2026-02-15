@@ -4,8 +4,8 @@ extends Node2D;
 class_name Drawing2D;
 ## Base class for drawing shapes
 ##
-## Provides some useful automations fro drawing, such as managing
-## and providng a rid to draw to.
+## Base class for nodes that draw some simple shapes to the screen.
+## Provides some data related to how those are drawn.
 
 
 const HANDLE_COLOR := Color.ORANGE;

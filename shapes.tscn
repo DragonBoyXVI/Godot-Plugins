@@ -6,39 +6,60 @@
 [ext_resource type="Shader" uid="uid://3rcfvi023ood" path="res://addons/xvi_utilities/Assets/Shaders/canvas_disolve.gdshader" id="4_0q0gk"]
 [ext_resource type="Texture2D" uid="uid://b1fcj1qdch5bt" path="res://icon.svg" id="5_cu2rh"]
 
-[sub_resource type="Gradient" id="Gradient_bxvlv"]
+[sub_resource type="Gradient" id="Gradient_1mehd"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_rms33"]
-gradient = SubResource("Gradient_bxvlv")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_b8e0k"]
+gradient = SubResource("Gradient_1mehd")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i0a4w"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12ag0"]
 shader = ExtResource("4_0q0gk")
-shader_parameter/progress = 0.71999998390656
-shader_parameter/disolve_texture = SubResource("GradientTexture1D_rms33")
+shader_parameter/progress = 0.0
+shader_parameter/disolve_texture = SubResource("GradientTexture1D_b8e0k")
+
+[sub_resource type="QuadMesh" id="QuadMesh_0q0gk"]
+size = Vector2(128, 128)
+
+[sub_resource type="MultiMesh" id="MultiMesh_cu2rh"]
+custom_aabb = AABB(0, 0, 0, 128, 128, 128)
+instance_count = 14
+mesh = SubResource("QuadMesh_0q0gk")
+buffer = PackedFloat32Array(0, 7.9999995, 0, 0, 0, 0.005, 0.010526316, 0.29032257, -8, 7.999999, 0, 0, 0, 0, -0.07368421, 0.29032254, 0.30448198, 6.4692664, 0, 0, 0, 0.005, 0.013731389, 0.24094407, -7.0865536, 3.4077988, 0, 0, 0, 0, -0.06406899, 0.14218706, 1.1715727, 5.171573, 0, 0, 0, 0.005, 0.02285866, 0.199083, -4.485282, -0.485281, 0, 0, 0, 0, -0.036687177, 0.016603839, 2.4692657, 4.304482, 0, 0, 0, 0.005, 0.036518585, 0.17111233, -0.59220314, -3.0865536, 0, 0, 0, 0, 0.0042925985, -0.06730818, 4, 4, 0, 0, 0, 0.005, 0.05263158, 0.16129032, 4, -4, 0, 0, 0, 0, 0.05263158, -0.09677419, 89, 4, 0, 0, 0, 0.005, 0.94736844, 0.16129032, 89, -4, 0, 0, 0, 0, 0.94736844, -0.09677419, 90.53073, 4.3044825, 0, 0, 0, 0.005, 0.96348137, 0.17111234, 93.5922, -3.0865536, 0, 0, 0, 0, 0.9957074, -0.06730818)
 
 [node name="Node2D" type="Node2D" unique_id=1984034376]
 
 [node name="CircleDrawing2D" type="Node2D" parent="." unique_id=1734691455]
+material = SubResource("ShaderMaterial_12ag0")
 position = Vector2(109, 192)
 script = ExtResource("1_1mehd")
 draw_flags = 3
 metadata/_custom_type_script = "uid://caitxas46vmnk"
 
 [node name="RectangleDrawing2D" type="Node2D" parent="." unique_id=289953598]
+material = SubResource("ShaderMaterial_12ag0")
 position = Vector2(330, 243)
 script = ExtResource("2_b8e0k")
 draw_flags = 3
 metadata/_custom_type_script = "uid://3rdke1wuejq8"
 
 [node name="PerfectPolygon2D" type="Node2D" parent="." unique_id=592502137]
+material = SubResource("ShaderMaterial_12ag0")
 position = Vector2(38, 405)
 script = ExtResource("3_12ag0")
 draw_flags = 3
 metadata/_custom_type_script = "uid://bvhn4ekqt2dxo"
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1151597324]
-material = SubResource("ShaderMaterial_i0a4w")
+material = SubResource("ShaderMaterial_12ag0")
 points = PackedVector2Array(-175, -3, -10, -53, 58, -66, 56, 12, 177, -15)
 width = 41.395
 texture = ExtResource("5_cu2rh")
 texture_mode = 2
+
+[node name="MultiMeshInstance2D" type="MultiMeshInstance2D" parent="." unique_id=1812891598]
+visible = false
+multimesh = SubResource("MultiMesh_cu2rh")
+texture = ExtResource("5_cu2rh")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1660355176]
+mesh = SubResource("QuadMesh_0q0gk")
+texture = ExtResource("5_cu2rh")
