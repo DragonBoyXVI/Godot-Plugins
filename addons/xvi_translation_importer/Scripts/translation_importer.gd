@@ -61,7 +61,7 @@ func parse_file_for_dict( path: String ) -> void:
 ## NOTE: If this defines extra data that is already defined for that language,
 ## it will be overwritten by the most recent parse.[br]
 ## If the dict is invalid, nothing happens and an error is printed.
-func parse_dict_to_translation( translation_dict: Dictionary ) -> void:
+func parse_dict_to_translation( translation_dict: Dictionary ) -> Translation:
 	
 	if ( not translation_dict.has( LOCALE_CHECK ) ):
 		push_error( "Translation dict does not contain a locale key! Translations must have a \"", LOCALE_CHECK, "\" key." )
@@ -87,3 +87,4 @@ func parse_dict_to_translation( translation_dict: Dictionary ) -> void:
 	translation.locale = locale
 	TranslationServer.add_translation( translation )
 	_extra_data[ locale ] = extra
+	return translation

@@ -1,6 +1,6 @@
 using Godot;
 
-namespace DragonXVI.Translation;
+namespace DragonXVI;
 
 /// <summary>
 /// CSharp helper to make using the importer easier.
