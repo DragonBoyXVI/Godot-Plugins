@@ -18,9 +18,10 @@ func _init() -> void:
 
 func _validate_property( property: Dictionary ) -> void:
 	const DISABLED: PackedStringArray = [
-		^"motion_mode",
-		^"collision_layer",
-		^"collision_mask",
+		"motion_mode",
+		"collision_layer",
+		"collision_mask",
+		"z_index",
 	];
 	
 	if ( DISABLED.has( property[ Property.NAME ] ) ):
