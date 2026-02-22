@@ -5,6 +5,10 @@ extends Node2D
 @export var elem2: ElementGD;
 
 
+func _test():
+	pass
+
+
 func _input( event: InputEvent ) -> void:
 	if ( event is InputEventKey ):
 		if ( not event.is_pressed() ): return;
