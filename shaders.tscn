@@ -19,7 +19,7 @@ shader_parameter/base_scroll = Vector2(0, 0)
 
 [sub_resource type="Gradient" id="Gradient_xc83g"]
 interpolation_color_space = 1
-offsets = PackedFloat32Array(0, 0.5, 1)
+offsets = PackedFloat32Array(0, 0.4, 1)
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
 metadata/_snap_enabled = true
 
@@ -29,45 +29,22 @@ width = 1
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xc83g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l4a42"]
 shader = ExtResource("1_ov4wh")
-shader_parameter/distort_strength = 0.999999977648
-shader_parameter/distort_scroll = Vector2(0.05, 0.05)
+shader_parameter/distort_strength = 0.3999999910592
+shader_parameter/distort_scroll = Vector2(0.125, 0.5)
 shader_parameter/distortion_map = SubResource("NoiseTexture2D_1ugyy")
 shader_parameter/base_scroll = Vector2(0, 0)
 
-[sub_resource type="Gradient" id="Gradient_0t8bo"]
-interpolation_mode = 1
-interpolation_color_space = 1
-offsets = PackedFloat32Array(0, 0.3, 0.5, 0.7)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="Gradient" id="Gradient_toqio"]
+offsets = PackedFloat32Array(0, 0.4)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 metadata/_snap_enabled = true
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_q42cc"]
-gradient = SubResource("Gradient_0t8bo")
-width = 1
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.5, 0)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_toqio"]
-shader = ExtResource("1_ov4wh")
-shader_parameter/distort_strength = 0.999999977648
-shader_parameter/distort_scroll = Vector2(0.05, 0.05)
-shader_parameter/distortion_map = SubResource("NoiseTexture2D_1ugyy")
-shader_parameter/base_scroll = Vector2(0, 0)
-
-[sub_resource type="Gradient" id="Gradient_xh1am"]
-interpolation_mode = 1
-interpolation_color_space = 1
-offsets = PackedFloat32Array(0.8, 0.9, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_f8sj8"]
-gradient = SubResource("Gradient_xh1am")
-width = 1
-fill_from = Vector2(0.5, 1)
-fill_to = Vector2(0.5, 0)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xh1am"]
+gradient = SubResource("Gradient_toqio")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_l4a42"]
 
@@ -102,10 +79,49 @@ fill = 1
 fill_from = Vector2(0.5, 0)
 fill_to = Vector2(0.5, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xc83g"]
+shader = ExtResource("1_ov4wh")
+shader_parameter/distort_strength = 0.999999977648
+shader_parameter/distort_scroll = Vector2(0.05, 0.05)
+shader_parameter/distortion_map = SubResource("NoiseTexture2D_1ugyy")
+shader_parameter/base_scroll = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_0t8bo"]
+interpolation_mode = 1
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.3, 0.5, 0.7)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_q42cc"]
+gradient = SubResource("Gradient_0t8bo")
+width = 1
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_toqio"]
+shader = ExtResource("1_ov4wh")
+shader_parameter/distort_strength = 0.999999977648
+shader_parameter/distort_scroll = Vector2(0.05, 0.05)
+shader_parameter/distortion_map = SubResource("NoiseTexture2D_1ugyy")
+shader_parameter/base_scroll = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_xh1am"]
+interpolation_mode = 1
+interpolation_color_space = 1
+offsets = PackedFloat32Array(0, 0.9, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f8sj8"]
+gradient = SubResource("Gradient_xh1am")
+width = 1
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
 [node name="Node2D" type="Node2D" unique_id=564292498]
 
 [node name="Fire" type="Node2D" parent="." unique_id=1041604196]
-visible = false
 
 [node name="Sprite2D4" type="Sprite2D" parent="Fire" unique_id=1947130966]
 modulate = Color(1, 0, 0, 1)
@@ -122,7 +138,41 @@ position = Vector2(-1.1920929e-07, 324.00003)
 scale = Vector2(1152, 10.125)
 texture = SubResource("GradientTexture2D_l4a42")
 
+[node name="Fire2" type="Node2D" parent="." unique_id=1651005929]
+visible = false
+
+[node name="Sprite2D4" type="Sprite2D" parent="Fire2" unique_id=1144211881]
+modulate = Color(1, 0, 0, 1)
+material = SubResource("ShaderMaterial_l4a42")
+texture = SubResource("GradientTexture2D_xh1am")
+flip_h = true
+
+[node name="Sprite2D3" type="Sprite2D" parent="Fire2" unique_id=1027773345]
+modulate = Color(1, 0.60784316, 0, 0.49411765)
+material = SubResource("ShaderMaterial_l4a42")
+texture = SubResource("GradientTexture2D_xh1am")
+
+[node name="Waterfall" type="Node2D" parent="." unique_id=337918947]
+visible = false
+
+[node name="Cliff" type="Sprite2D" parent="Waterfall" unique_id=607822993]
+material = SubResource("ShaderMaterial_q42cc")
+position = Vector2(576, 324.00003)
+scale = Vector2(8.999999, 5.0625005)
+texture = ExtResource("2_xc83g")
+
+[node name="Water" type="Sprite2D" parent="Waterfall" unique_id=1939845638]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_xh1am")
+position = Vector2(575.99994, 324)
+scale = Vector2(4.4999995, 2.53125)
+texture = SubResource("GradientTexture2D_bawqy")
+region_enabled = true
+region_rect = Rect2(0, 0, 256, 256)
+
 [node name="Lake" type="Node2D" parent="." unique_id=681278230]
+editor_description = "This would look significantly better with an actual watery texture but you get the idea"
+visible = false
 
 [node name="Sprite2D4" type="Sprite2D" parent="Lake" unique_id=192582681]
 modulate = Color(0.29150543, 0.48165804, 0.72154915, 0.5058824)
@@ -137,22 +187,3 @@ material = SubResource("ShaderMaterial_toqio")
 position = Vector2(-1.1920929e-07, 324.00003)
 scale = Vector2(1152, 10.125)
 texture = SubResource("GradientTexture2D_f8sj8")
-
-[node name="Waterfall" type="Node2D" parent="." unique_id=337918947]
-visible = false
-
-[node name="Cliff" type="Sprite2D" parent="Waterfall" unique_id=607822993]
-visible = false
-material = SubResource("ShaderMaterial_q42cc")
-position = Vector2(576, 324.00003)
-scale = Vector2(8.999999, 5.0625005)
-texture = ExtResource("2_xc83g")
-
-[node name="Water" type="Sprite2D" parent="Waterfall" unique_id=1939845638]
-texture_repeat = 2
-material = SubResource("ShaderMaterial_xh1am")
-position = Vector2(575.99994, 324)
-scale = Vector2(4.4999995, 2.53125)
-texture = SubResource("GradientTexture2D_bawqy")
-region_enabled = true
-region_rect = Rect2(0, 0, 256, 256)
