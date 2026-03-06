@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://k48x256k6r58"]
+
+[ext_resource type="Shader" uid="uid://c5kcwn0fsyqph" path="res://addons/xvi_utilities/Assets/Shaders/screen_hue.gdshader" id="1_2iarl"]
+[ext_resource type="Texture2D" uid="uid://b1fcj1qdch5bt" path="res://icon.svg" id="1_i2qc4"]
+[ext_resource type="Shader" uid="uid://bi2taa4hnunqs" path="res://addons/xvi_utilities/Assets/Shaders/canvas_animation.gdshader" id="2_2iarl"]
+[ext_resource type="Texture2D" uid="uid://b5ribwh1tf45n" path="res://addons/xvi_utilities/Assets/Images/brick.png" id="3_fbu8v"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fbu8v"]
+shader = ExtResource("1_2iarl")
+shader_parameter/tint_color = Color(1, 1, 1, 1)
+shader_parameter/tint_strength = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d21ai"]
+shader = ExtResource("2_2iarl")
+shader_parameter/speed = 1.0
+shader_parameter/time_offset = 0.0
+shader_parameter/rotate_speed = 0.0
+shader_parameter/rotate_offset = 0.0
+shader_parameter/wave_speed = Vector2(1, 2)
+shader_parameter/wave_offset = 0.0
+shader_parameter/wave_amplitude = Vector2(32, 32)
+shader_parameter/wave_offset_per_vertex = 0.0
+shader_parameter/pulse_speed = Vector2(1, 1)
+shader_parameter/pulse_offset = 0.0
+shader_parameter/pulse_amplitude = Vector2(0, 0)
+shader_parameter/palette_enabled = false
+
+[node name="Overlays" type="Node2D" unique_id=2119976198]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2041788515]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=865351486]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Hue" type="TextureRect" parent="CanvasLayer/Control" unique_id=1878951918]
+material = SubResource("ShaderMaterial_fbu8v")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fbu8v")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1116392313]
+position = Vector2(355, 361)
+texture = ExtResource("1_i2qc4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=255042774]
+material = SubResource("ShaderMaterial_d21ai")
+position = Vector2(543, 504)
+texture = ExtResource("1_i2qc4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=637489350]
+position = Vector2(675, 284)
+texture = ExtResource("3_fbu8v")
