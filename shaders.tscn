@@ -14,8 +14,12 @@ seamless = true
 shader = ExtResource("1_ov4wh")
 shader_parameter/distort_strength = 0.999999977648
 shader_parameter/distort_scroll = Vector2(0.125, 0.5)
+shader_parameter/distort_tile = Vector2i(1, 1)
+shader_parameter/distort_rotate_speed = 0.0
 shader_parameter/distortion_map = SubResource("NoiseTexture2D_1ugyy")
 shader_parameter/base_scroll = Vector2(0, 0)
+shader_parameter/base_rotate_speed = 0.0
+shader_parameter/base_tile = Vector2i(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_xc83g"]
 interpolation_color_space = 1
@@ -33,8 +37,12 @@ fill_to = Vector2(0.5, 0)
 shader = ExtResource("1_ov4wh")
 shader_parameter/distort_strength = 0.3999999910592
 shader_parameter/distort_scroll = Vector2(0.125, 0.5)
+shader_parameter/distort_tile = Vector2i(1, 1)
+shader_parameter/distort_rotate_speed = 0.0
 shader_parameter/distortion_map = SubResource("NoiseTexture2D_1ugyy")
 shader_parameter/base_scroll = Vector2(0, 0)
+shader_parameter/base_rotate_speed = 0.0
+shader_parameter/base_tile = Vector2i(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_toqio"]
 offsets = PackedFloat32Array(0, 0.4)
@@ -58,15 +66,23 @@ seamless = true
 shader = ExtResource("1_ov4wh")
 shader_parameter/distort_strength = 0.05
 shader_parameter/distort_scroll = Vector2(0.125, 0.125)
+shader_parameter/distort_tile = Vector2i(1, 1)
+shader_parameter/distort_rotate_speed = 0.0
 shader_parameter/distortion_map = SubResource("NoiseTexture2D_toqio")
 shader_parameter/base_scroll = Vector2(0, 0)
+shader_parameter/base_rotate_speed = 0.0
+shader_parameter/base_tile = Vector2i(1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xh1am"]
 shader = ExtResource("1_ov4wh")
 shader_parameter/distort_strength = 0.0999999977648
 shader_parameter/distort_scroll = Vector2(1, -1)
+shader_parameter/distort_tile = Vector2i(3, 4)
+shader_parameter/distort_rotate_speed = 0.0
 shader_parameter/distortion_map = ExtResource("3_xc83g")
 shader_parameter/base_scroll = Vector2(0.05, -2)
+shader_parameter/base_rotate_speed = 0.0
+shader_parameter/base_tile = Vector2i(5, 5)
 
 [sub_resource type="Gradient" id="Gradient_f8sj8"]
 offsets = PackedFloat32Array(0, 0.6037736, 0.6603774)
@@ -83,8 +99,12 @@ fill_to = Vector2(0.5, 1)
 shader = ExtResource("1_ov4wh")
 shader_parameter/distort_strength = 0.999999977648
 shader_parameter/distort_scroll = Vector2(0.05, 0.05)
+shader_parameter/distort_tile = Vector2i(1, 1)
+shader_parameter/distort_rotate_speed = 0.0
 shader_parameter/distortion_map = SubResource("NoiseTexture2D_1ugyy")
 shader_parameter/base_scroll = Vector2(0, 0)
+shader_parameter/base_rotate_speed = 0.0
+shader_parameter/base_tile = Vector2i(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_0t8bo"]
 interpolation_mode = 1
@@ -103,8 +123,12 @@ fill_to = Vector2(0.5, 0)
 shader = ExtResource("1_ov4wh")
 shader_parameter/distort_strength = 0.999999977648
 shader_parameter/distort_scroll = Vector2(0.05, 0.05)
+shader_parameter/distort_tile = Vector2i(1, 1)
+shader_parameter/distort_rotate_speed = 0.0
 shader_parameter/distortion_map = SubResource("NoiseTexture2D_1ugyy")
 shader_parameter/base_scroll = Vector2(0, 0)
+shader_parameter/base_rotate_speed = 0.0
+shader_parameter/base_tile = Vector2i(1, 1)
 
 [sub_resource type="Gradient" id="Gradient_xh1am"]
 interpolation_mode = 1
@@ -119,9 +143,27 @@ width = 1
 fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xc83g"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l4a42"]
+noise = SubResource("FastNoiseLite_xc83g")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f8sj8"]
+shader = ExtResource("1_ov4wh")
+shader_parameter/distort_strength = 0.05
+shader_parameter/distort_scroll = Vector2(0, 0)
+shader_parameter/distort_tile = Vector2i(1, 1)
+shader_parameter/distort_rotate_speed = 0.05
+shader_parameter/distortion_map = SubResource("NoiseTexture2D_l4a42")
+shader_parameter/base_scroll = Vector2(0, 0)
+shader_parameter/base_rotate_speed = 0.0
+shader_parameter/base_tile = Vector2i(1, 1)
+
 [node name="Node2D" type="Node2D" unique_id=564292498]
 
 [node name="Fire" type="Node2D" parent="." unique_id=1041604196]
+visible = false
 
 [node name="Sprite2D4" type="Sprite2D" parent="Fire" unique_id=1947130966]
 modulate = Color(1, 0, 0, 1)
@@ -164,11 +206,9 @@ texture = ExtResource("2_xc83g")
 [node name="Water" type="Sprite2D" parent="Waterfall" unique_id=1939845638]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_xh1am")
-position = Vector2(575.99994, 324)
-scale = Vector2(4.4999995, 2.53125)
+position = Vector2(578.00006, 324.5)
+scale = Vector2(9.000001, 10.078125)
 texture = SubResource("GradientTexture2D_bawqy")
-region_enabled = true
-region_rect = Rect2(0, 0, 256, 256)
 
 [node name="Lake" type="Node2D" parent="." unique_id=681278230]
 editor_description = "This would look significantly better with an actual watery texture but you get the idea"
@@ -187,3 +227,7 @@ material = SubResource("ShaderMaterial_toqio")
 position = Vector2(-1.1920929e-07, 324.00003)
 scale = Vector2(1152, 10.125)
 texture = SubResource("GradientTexture2D_f8sj8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=931913710]
+material = SubResource("ShaderMaterial_f8sj8")
+texture = ExtResource("2_xc83g")
