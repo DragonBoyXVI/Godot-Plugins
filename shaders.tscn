@@ -3,6 +3,8 @@
 [ext_resource type="Shader" uid="uid://wlw83n1hcbl3" path="res://addons/xvi_utilities/Assets/Shaders/distort_scroll.gdshader" id="1_ov4wh"]
 [ext_resource type="Texture2D" uid="uid://b1fcj1qdch5bt" path="res://icon.svg" id="2_xc83g"]
 [ext_resource type="Texture2D" uid="uid://sye02sioo75s" path="res://distort.tres" id="3_xc83g"]
+[ext_resource type="Texture2D" uid="uid://b5ribwh1tf45n" path="res://addons/xvi_utilities/Assets/Images/brick.png" id="4_l4a42"]
+[ext_resource type="Shader" uid="uid://c7iuqtidemgvl" path="res://addons/xvi_utilities/Assets/Shaders/blend_hue.gdshader" id="4_toqio"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cjh7h"]
 
@@ -76,13 +78,13 @@ shader_parameter/base_tile = Vector2i(1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xh1am"]
 shader = ExtResource("1_ov4wh")
 shader_parameter/distort_strength = 0.0999999977648
-shader_parameter/distort_scroll = Vector2(1, -1)
-shader_parameter/distort_tile = Vector2i(3, 4)
+shader_parameter/distort_scroll = Vector2(0, -0.25)
+shader_parameter/distort_tile = Vector2i(1, 2)
 shader_parameter/distort_rotate_speed = 0.0
 shader_parameter/distortion_map = ExtResource("3_xc83g")
-shader_parameter/base_scroll = Vector2(0.05, -2)
+shader_parameter/base_scroll = Vector2(0, -1)
 shader_parameter/base_rotate_speed = 0.0
-shader_parameter/base_tile = Vector2i(5, 5)
+shader_parameter/base_tile = Vector2i(5, 3)
 
 [sub_resource type="Gradient" id="Gradient_f8sj8"]
 offsets = PackedFloat32Array(0, 0.6037736, 0.6603774)
@@ -146,19 +148,27 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xc83g"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_l4a42"]
+width = 128
+height = 128
+generate_mipmaps = false
 noise = SubResource("FastNoiseLite_xc83g")
 seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f8sj8"]
 shader = ExtResource("1_ov4wh")
 shader_parameter/distort_strength = 0.05
-shader_parameter/distort_scroll = Vector2(0, 0)
-shader_parameter/distort_tile = Vector2i(1, 1)
-shader_parameter/distort_rotate_speed = 0.05
+shader_parameter/distort_scroll = Vector2(0.125, 0.125)
+shader_parameter/distort_tile = Vector2i(3, 3)
+shader_parameter/distort_rotate_speed = 0.0
 shader_parameter/distortion_map = SubResource("NoiseTexture2D_l4a42")
 shader_parameter/base_scroll = Vector2(0, 0)
 shader_parameter/base_rotate_speed = 0.0
-shader_parameter/base_tile = Vector2i(1, 1)
+shader_parameter/base_tile = Vector2i(5, 5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bawqy"]
+shader = ExtResource("4_toqio")
+shader_parameter/tint_color = Color(0, 0, 0, 1)
+shader_parameter/tint_strength = 0.999999977648
 
 [node name="Node2D" type="Node2D" unique_id=564292498]
 
@@ -204,7 +214,6 @@ scale = Vector2(8.999999, 5.0625005)
 texture = ExtResource("2_xc83g")
 
 [node name="Water" type="Sprite2D" parent="Waterfall" unique_id=1939845638]
-texture_repeat = 2
 material = SubResource("ShaderMaterial_xh1am")
 position = Vector2(578.00006, 324.5)
 scale = Vector2(9.000001, 10.078125)
@@ -228,6 +237,16 @@ position = Vector2(-1.1920929e-07, 324.00003)
 scale = Vector2(1152, 10.125)
 texture = SubResource("GradientTexture2D_f8sj8")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=931913710]
+[node name="Distort" type="Sprite2D" parent="." unique_id=931913710]
+visible = false
 material = SubResource("ShaderMaterial_f8sj8")
 texture = ExtResource("2_xc83g")
+
+[node name="HueGodot" type="Sprite2D" parent="." unique_id=1896855159]
+material = SubResource("ShaderMaterial_bawqy")
+texture = ExtResource("2_xc83g")
+
+[node name="HueBrick" type="Sprite2D" parent="." unique_id=1140007119]
+material = SubResource("ShaderMaterial_bawqy")
+position = Vector2(216, 7)
+texture = ExtResource("4_l4a42")
