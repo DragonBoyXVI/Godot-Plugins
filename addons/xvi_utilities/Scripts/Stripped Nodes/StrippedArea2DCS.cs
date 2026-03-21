@@ -1,5 +1,4 @@
-using System;
-using System.Linq;
+using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
 
@@ -13,6 +12,10 @@ namespace DragonXVI;
 [GlobalClass,Tool]
 public abstract partial class StrippedArea2DCS : Area2D, IStrippedProperties
 {
+    static StrippedArea2DCS()
+	{
+		strippedPropertyList = GetStrippedProperties();
+	}
 	public StrippedArea2DCS()
 	{
 		Monitoring = false;
@@ -30,8 +33,7 @@ public abstract partial class StrippedArea2DCS : Area2D, IStrippedProperties
 	public override void _ValidateProperty(Dictionary property)
 	{
 		base._ValidateProperty(property);
-
-		if (StrippedProperties.Contains((string)property[PropertyDetail.Name]))
+		if (strippedPropertyList.Contains((string)property[PropertyDetail.Name]))
 		{
 			property[PropertyDetail.Usage] = (long)PropertyUsageFlags.None;
 		}
@@ -51,11 +53,12 @@ public abstract partial class StrippedArea2DCS : Area2D, IStrippedProperties
 	/// <param name="shape">The new [CollisionShape].</param>
 	public virtual void _ShapeEnteredTree(CollisionShape2D shape) {  }
 
-	private static readonly string[] StrippedProperties = [
-		Area2D.PropertyName.Monitoring,
-		Area2D.PropertyName.Monitorable,
-		CollisionObject2D.PropertyName.CollisionLayer,
-		CollisionObject2D.PropertyName.CollisionMask,
-		CollisionObject2D.PropertyName.InputPickable,
-	];
+    public static List<string> GetStrippedProperties() => [
+            Area2D.PropertyName.Monitoring,
+            Area2D.PropertyName.Monitorable,
+            CollisionObject2D.PropertyName.CollisionLayer,
+            CollisionObject2D.PropertyName.CollisionMask,
+            CollisionObject2D.PropertyName.InputPickable,
+        ];
+	private static readonly List<string> strippedPropertyList;
 }

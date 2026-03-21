@@ -1,5 +1,4 @@
-using System;
-using System.Linq;
+using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
 
@@ -10,8 +9,12 @@ namespace DragonXVI;
 /// Some values are simply left to their default state, while others are turned off (eg, MotionMode is grounded, and CollisonLayer/Mask is 0).
 /// </summary>
 [GlobalClass,Tool]
-public abstract partial class StrippedCharacterBody2DCS : CharacterBody2D
+public abstract partial class StrippedCharacterBody2DCS : CharacterBody2D, IStrippedProperties
 {
+	static StrippedCharacterBody2DCS()
+	{
+		strippedPropertyList = GetStrippedProperties();
+	}
 	public StrippedCharacterBody2DCS()
 	{
 		CollisionLayer = 0;
@@ -22,15 +25,16 @@ public abstract partial class StrippedCharacterBody2DCS : CharacterBody2D
 	{
 		base._ValidateProperty(property);
 
-		if (DisabledProperties.Contains( (string)property[PropertyDetail.Name] ))
+		if (strippedPropertyList.Contains( (string)property[PropertyDetail.Name] ))
 		{
 			property[PropertyDetail.Usage] = (long)PropertyUsageFlags.None;
 		}
 	}
 
-	private static readonly string[] DisabledProperties = [
+    public static List<string> GetStrippedProperties() => [
 		CharacterBody2D.PropertyName.MotionMode,
 		CollisionObject2D.PropertyName.CollisionLayer,
 		CollisionObject2D.PropertyName.CollisionMask,
 	];
+	private static readonly List<string> strippedPropertyList;
 }

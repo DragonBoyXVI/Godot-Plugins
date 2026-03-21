@@ -87,25 +87,28 @@ public static class RayDict
 	public static readonly StringName Metadata = new("metadata");
 }
 
+
 /// <summary>
 /// Simple interface for making autoloads easier to use in CS.
-/// The Instance value can be set in any function you like, as long as teh autoload sets it.
+/// Basically just ensures that all autoloads have a method for getting the autoload instance.
 /// </summary>
 /// <typeparam name="T">The autoload type.</typeparam>
 public interface IAutoload<T>
 {
-    public abstract static T Instance { get; protected set; }
+	/// <summary>
+	/// Returns the active autoload instance.
+	/// </summary>
+	/// <returns>Ditto :)</returns>
+	public abstract static T GetIntsance();
 }
+/// <summary>
+/// Interface for any nodes that have properties stripped from them.
+/// </summary>
 public interface IStrippedProperties
 {
-	protected abstract static string[] StrippedProperties{ get; set; }
+	public abstract static List<string> GetStrippedProperties();
 }
 
-public class TestClass : IAutoload<TestClass>, IStrippedProperties
-{
-    static TestClass IAutoload<TestClass>.Instance { get; set; }
-    static string[] IStrippedProperties.StrippedProperties { get; set; } = [];
-}
 
 /// <summary>
 /// Holds some useful fuctions.
