@@ -86,6 +86,16 @@ public static class RayDict
 }
 
 /// <summary>
+/// Simple interface for making autoloads easier to use in CS.
+/// The Instance value can be set in any function you like, as long as teh autoload sets it.
+/// </summary>
+/// <typeparam name="T"></typeparam>
+public interface IAutoload<T>
+{
+	public static T Instance {get; private set;}
+}
+
+/// <summary>
 /// Holds some useful fuctions.
 /// </summary>
 public class XVIUtil
