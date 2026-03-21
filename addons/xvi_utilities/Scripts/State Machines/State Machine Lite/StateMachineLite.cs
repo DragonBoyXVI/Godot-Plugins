@@ -1,37 +1,33 @@
-using Godot;
-
 namespace DragonXVI;
 
 /// <summary>
 /// Simple match based state machine wrapper.
 /// Also emits godot signals when the "state" is changed.
 /// </summary>
-public partial class StateMachineLite : RefCounted
+public partial class StateMachineLite<T>
 {
+    public delegate void StateLiteDelegate(T state);
     /// <summary>
     /// Emitted after the state is changed.
     /// </summary>
-    /// <param name="state">The new state</param>
-    [Signal]
-    public delegate void StateEnteredEventHandler(int state);
+    public event StateLiteDelegate StateEntered;
     /// <summary>
     /// Emitted before the state is changed.
     /// </summary>
-    /// <param name="state">The old state</param>
-    [Signal]
-    public delegate void StateLeftEventHandler(int state);
+    public event StateLiteDelegate StateLeft;
 
-    private int State;
-
-    public int GetState()
+    /// <summary>
+    /// The current state.
+    /// </summary>
+    public T State
     {
-        return State;
+        get => _state;
+        set
+        {
+            StateLeft?.Invoke(_state);
+            _state = value;
+            StateEntered?.Invoke(value);
+        }
     }
-
-    public void SetState( int state )
-    {
-        EmitSignal(SignalName.StateLeft, State);
-        State = state;
-        EmitSignal(SignalName.StateEntered, State);
-    }
+    private T _state;
 }
