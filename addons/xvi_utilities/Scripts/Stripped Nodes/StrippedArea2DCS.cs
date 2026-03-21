@@ -11,7 +11,7 @@ namespace DragonXVI;
 /// Deactivated properties are normally set to an "off" state.
 /// </summary>
 [GlobalClass,Tool]
-public abstract partial class StrippedArea2DCS : Area2D
+public abstract partial class StrippedArea2DCS : Area2D, IStrippedProperties
 {
 	public StrippedArea2DCS()
 	{
@@ -31,7 +31,7 @@ public abstract partial class StrippedArea2DCS : Area2D
 	{
 		base._ValidateProperty(property);
 
-		if (DisabledProperties.Contains((string)property[PropertyDetail.Name]))
+		if (StrippedProperties.Contains((string)property[PropertyDetail.Name]))
 		{
 			property[PropertyDetail.Usage] = (long)PropertyUsageFlags.None;
 		}
@@ -39,9 +39,9 @@ public abstract partial class StrippedArea2DCS : Area2D
 
 	public virtual void _OnChildEnteredTree(Node node)
 	{
-		if ( node is CollisionShape2D )
+		if ( node is CollisionShape2D d)
 		{
-			_ShapeEnteredTree((CollisionShape2D)node);
+			_ShapeEnteredTree(d);
 		}
 	}
 	/// <summary>
@@ -51,7 +51,7 @@ public abstract partial class StrippedArea2DCS : Area2D
 	/// <param name="shape">The new [CollisionShape].</param>
 	public virtual void _ShapeEnteredTree(CollisionShape2D shape) {  }
 
-	private static readonly string[] DisabledProperties = [
+	private static readonly string[] StrippedProperties = [
 		Area2D.PropertyName.Monitoring,
 		Area2D.PropertyName.Monitorable,
 		CollisionObject2D.PropertyName.CollisionLayer,

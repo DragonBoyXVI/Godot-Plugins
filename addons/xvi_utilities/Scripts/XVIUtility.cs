@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Godot;
 
 namespace DragonXVI;
@@ -89,24 +91,34 @@ public static class RayDict
 /// Simple interface for making autoloads easier to use in CS.
 /// The Instance value can be set in any function you like, as long as teh autoload sets it.
 /// </summary>
-/// <typeparam name="T"></typeparam>
+/// <typeparam name="T">The autoload type.</typeparam>
 public interface IAutoload<T>
 {
-	public static T Instance {get; private set;}
+    public abstract static T Instance { get; protected set; }
+}
+public interface IStrippedProperties
+{
+	protected abstract static string[] StrippedProperties{ get; set; }
+}
+
+public class TestClass : IAutoload<TestClass>, IStrippedProperties
+{
+    static TestClass IAutoload<TestClass>.Instance { get; set; }
+    static string[] IStrippedProperties.StrippedProperties { get; set; } = [];
 }
 
 /// <summary>
 /// Holds some useful fuctions.
 /// </summary>
-public class XVIUtil
+public static class XVIUtil
 {
-	/// <summary>
-	/// Disables all node processes that have a disable function.
-	/// Such as process, physics process, input processes, etc.
-	/// Useful for tool nodes, be sure to call this in _Ready rather than the constructor.
-	/// </summary>
-	/// <param name="node">The node to disable.</param>
-	public static void DisableNodeProcesses(Node node)
+    /// <summary>
+    /// Disables all node processes that have a disable function.
+    /// Such as process, physics process, input processes, etc.
+    /// Useful for tool nodes, be sure to call this in _Ready rather than the constructor.
+    /// </summary>
+    /// <param name="node">The node to disable.</param>
+    public static void DisableNodeProcesses(Node node)
 	{
 		node.SetProcess(false);
 		node.SetPhysicsProcess(false);
