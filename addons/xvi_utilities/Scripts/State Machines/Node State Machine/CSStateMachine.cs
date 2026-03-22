@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 using Godot;
 
 namespace DragonXVI;
@@ -43,6 +42,7 @@ public partial class CSStateMachine : Node
         if ( Engine.IsEditorHint() )
         {
             XVIUtil.DisableNodeProcesses(this);
+            return;
         }
 
         Godot.Collections.Array<Node> children = GetChildren();

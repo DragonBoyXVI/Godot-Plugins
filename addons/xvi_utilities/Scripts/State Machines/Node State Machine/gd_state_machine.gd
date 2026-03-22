@@ -30,6 +30,7 @@ func _ready() -> void:
 	
 	if ( Engine.is_editor_hint() ):
 		XVIFuncs.disable_node_processes( self );
+		return;
 	
 	var children := get_children()
 	for child: Node in children:
