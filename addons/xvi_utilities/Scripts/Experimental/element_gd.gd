@@ -1,7 +1,7 @@
 @tool
 #@static_unload
 extends Resource;
-class_name ElementGD;
+class_name _ElementGD;
 
 
 enum Bits {

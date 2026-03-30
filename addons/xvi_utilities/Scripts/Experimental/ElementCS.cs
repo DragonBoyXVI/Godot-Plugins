@@ -5,10 +5,10 @@ using Godot;
 namespace DragonXVI;
 
 [/*GlobalClass,*/Tool]
-public partial class ElementCS : Resource
+public partial class _ElementCS : Resource
 {
-	public ElementCS() { }
-	public ElementCS( Bits elem )
+	public _ElementCS() { }
+	public _ElementCS( Bits elem )
 	{
 		CurrentElement = elem;
 	}
@@ -56,7 +56,7 @@ public partial class ElementCS : Resource
 		return elem1.ToString() + ":" + elem2.ToString();
 	}
 
-	public int GetStrengthAgainst(ElementCS defendingElement)
+	public int GetStrengthAgainst(_ElementCS defendingElement)
 	{
 		string cacheKey = MakeCacheKey(CurrentElement, defendingElement.CurrentElement);
 		if ( Cache.TryGetValue(cacheKey, out int value))

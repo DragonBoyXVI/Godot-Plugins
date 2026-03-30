@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Godot;
 
@@ -55,24 +54,25 @@ public static class PropertyDetail
 /// </summary>
 public static class RayDict
 {
+    /// <summary>
+    /// The colliding object, usually a [Node2D] ([TileMapLayer] or a [CollisionObject2D])
+    /// Not sure whats returned if its an object created manually with [PhysicsServer2D].
+    /// </summary>
+    public static readonly StringName Collider = new("collider");
 	/// <summary>
-	/// Global position of the collision point.
-	/// </summary>
-	public static readonly StringName Position = new("position");
+    /// The colliding objects ID.
+	/// Not exactly sure what this means...
+    /// </summary>
+    public static readonly StringName ColliderID = new("collider_id");
 	/// <summary>
 	/// Normal vector pointing at the collision point.
 	/// Can be a zero vector if the collision happens inside a shape.
 	/// </summary>
 	public static readonly StringName Normal = new("normal");
 	/// <summary>
-	/// The [GodotObject] this hit, usually a node.
-	/// Can be null if it collides with something made via the physics server.
+	/// Global position of the collision point.
 	/// </summary>
-	public static readonly StringName Object = new("object");
-	/// <summary>
-	/// Object it collided against (whatever that means...).
-	/// </summary>
-	public static readonly StringName ObjectID = new("object_id");
+	public static readonly StringName Position = new("position");
 	/// <summary>
 	/// The Rid of the hit object.
 	/// </summary>
@@ -81,10 +81,6 @@ public static class RayDict
 	/// The shape index of the hit collider.
 	/// </summary>
 	public static readonly StringName Shape = new("shape");
-	/// <summary>
-	/// Collider's metadata.
-	/// </summary>
-	public static readonly StringName Metadata = new("metadata");
 }
 
 

@@ -32,7 +32,7 @@ public partial class CSStateMachine : Node
         set { _InitialState = value; UpdateConfigurationWarnings(); }
     }
     private CSState _InitialState;
-    public CSState CurrentState;
+    public CSState CurrentState{ protected set; get;}
     private readonly Dictionary<StringName, CSState> StateCache = [];
 
     public override void _Ready()
