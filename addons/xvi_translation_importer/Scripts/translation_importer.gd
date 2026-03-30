@@ -13,6 +13,7 @@ var _extra_data: Dictionary[ String, Dictionary ] = {}
 ## This node stores any extra data that cant be stored in a translation.
 ## For example, your json can contain an array of strings, and this will
 ## store that here for you to grab later.
+## Can return null if the extra data doesnt exist.
 func get_extra_data( key: String, locale: String = TranslationServer.get_locale() ) -> Variant:
 	
 	if ( not _extra_data.has( locale ) ):
@@ -20,7 +21,7 @@ func get_extra_data( key: String, locale: String = TranslationServer.get_locale(
 		return null
 	
 	var data: Dictionary = _extra_data[ locale ]
-	if ( not data.has( key ) ):
+	if ( not key in data ):
 		push_error( "Getting extra data that we dont have! ", locale, " ", key )
 		return null
 	

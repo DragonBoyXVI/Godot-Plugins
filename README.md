@@ -44,8 +44,3 @@ to your project or game.
 Custom translations can overwrite offical translations, but they
 cannot screw up offcial translations, as no files are ever written to,
 and the custom translations can simply be deleted by the user.
-
-### CSharp support
-
-This addon is GDScript focused, a minimal helper script is provided but youll
-have to treat it like any other autoload.
