@@ -3,17 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://b1fcj1qdch5bt" path="res://icon.svg" id="1_0e48y"]
 [ext_resource type="Script" uid="uid://nhuto6cgu07o" path="res://node_2d.gd" id="1_0hol4"]
 [ext_resource type="Shader" uid="uid://bit1t22ciih3f" path="res://addons/xvi_utilities/Assets/Shaders/palette_canvas_group.gdshader" id="2_epypp"]
-[ext_resource type="Script" uid="uid://cqyjyedgw71cf" path="res://addons/xvi_utilities/Scripts/Experimental/element_gd.gd" id="2_kdubu"]
 [ext_resource type="Shader" uid="uid://i70wcdmyjgo" path="res://addons/xvi_utilities/Assets/Shaders/palette_on_grayscale.gdshader" id="3_epypp"]
 [ext_resource type="Shader" uid="uid://bi2taa4hnunqs" path="res://addons/xvi_utilities/Assets/Shaders/canvas_animation.gdshader" id="3_kdubu"]
-
-[sub_resource type="Resource" id="Resource_kdubu"]
-script = ExtResource("2_kdubu")
-metadata/_custom_type_script = "uid://cqyjyedgw71cf"
-
-[sub_resource type="Resource" id="Resource_d21ai"]
-script = ExtResource("2_kdubu")
-metadata/_custom_type_script = "uid://cqyjyedgw71cf"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d21ai"]
 shader = ExtResource("3_kdubu")
@@ -57,8 +48,6 @@ shader_parameter/palette_texture = SubResource("GradientTexture1D_q6r6c")
 
 [node name="Node2D" type="Node2D" unique_id=616449960]
 script = ExtResource("1_0hol4")
-elem1 = SubResource("Resource_kdubu")
-elem2 = SubResource("Resource_d21ai")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=698132530]
 material = SubResource("ShaderMaterial_d21ai")
