@@ -1,7 +1,7 @@
 @abstract
 @icon( "res://addons/xvi_utilities/Assets/Script Icons/state_node.atlastex" )
 extends Node
-class_name GDState
+class_name StateGD
 ## A State node based in GDScript
 ##
 ## A state template thats compatable with a [GDStateMachine] node.
@@ -24,7 +24,7 @@ func _leave_state() -> void:
 
 ## Virtual for if this state can swap into a new state.
 ## By default, this stops states from transitioning into themselves.
-func _can_switch_state( state: GDState ) -> bool:
+func _can_switch_state( state: StateGD ) -> bool:
 	return name != state.name
 
 ## States are enabled when they become the current state

@@ -6,7 +6,7 @@ namespace DragonXVI;
 /// The base node for CSStates, to be used by a parent state machine.
 /// </summary>
 [GlobalClass, Icon("res://addons/xvi_utilities/Assets/Script Icons/state_node.atlastex")]
-public abstract partial class CSState : Node
+public abstract partial class StateCS : Node
 {
     /// <summary>
     /// Emitted when this wants to change to another state.
@@ -36,7 +36,7 @@ public abstract partial class CSState : Node
     /// </summary>
     /// <param name="state">The new state we wish to enter.</param>
     /// <returns>True if switch is valid.</returns>
-    public virtual bool _CanSwitchState(CSState state)
+    public virtual bool _CanSwitchState(StateCS state)
     {
         return Name != state.Name;
     }

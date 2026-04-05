@@ -7,33 +7,33 @@ namespace DragonXVI;
 /// A root node based state machine.
 /// </summary>
 [GlobalClass, Tool, Icon("res://addons/xvi_utilities/Assets/Script Icons/state_machine_node.atlastex")]
-public partial class CSStateMachine : Node
+public partial class StateMachineCS : Node
 {
     /// <summary>
     /// Emitted when a state is entered.
     /// </summary>
     /// <param name="state">New State</param>
     [Signal]
-    public delegate void StateEnteredEventHandler(CSState state);
+    public delegate void StateEnteredEventHandler(StateCS state);
     /// <summary>
     /// Emitted when a state is left.
     /// </summary>
     /// <param name="state">Old state.</param>
     [Signal]
-    public delegate void StateLeftEventHandler(CSState state);
+    public delegate void StateLeftEventHandler(StateCS state);
 
     /// <summary>
     /// The state this switches to when readied.
     /// </summary>
     [Export]
-	public CSState InitialState
+	public StateCS InitialState
 	{
         get { return _InitialState; }
         set { _InitialState = value; UpdateConfigurationWarnings(); }
     }
-    private CSState _InitialState;
-    public CSState CurrentState{ protected set; get;}
-    private readonly Dictionary<StringName, CSState> StateCache = [];
+    private StateCS _InitialState;
+    public StateCS CurrentState{ protected set; get;}
+    private readonly Dictionary<StringName, StateCS> StateCache = [];
 
     public override void _Ready()
     {
@@ -48,7 +48,7 @@ public partial class CSStateMachine : Node
         Godot.Collections.Array<Node> children = GetChildren();
         for (int i = 0; i < children.Count; i++)
         {
-            if (children[i] is CSState state)
+            if (children[i] is StateCS state)
             {
                 RegisterState(state);
             }
@@ -78,7 +78,7 @@ public partial class CSStateMachine : Node
     /// Normally only called on this machines children when readied.
     /// </summary>
     /// <param name="state">The state to register.</param>
-    public void RegisterState(CSState state)
+    public void RegisterState(StateCS state)
     {
         if (StateCache.ContainsKey(state.Name))
         {
@@ -96,7 +96,7 @@ public partial class CSStateMachine : Node
     /// <param name="StateName">Name of the state to change to.</param>
     public void ChangeState(StringName stateName)
     {
-        if (!StateCache.TryGetValue(stateName, out CSState newState))
+        if (!StateCache.TryGetValue(stateName, out StateCS newState))
         {
             GD.PushError("Trying to switch to a state we dont have: ", stateName);
             return;
