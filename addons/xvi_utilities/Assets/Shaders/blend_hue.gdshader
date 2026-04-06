@@ -14,7 +14,7 @@ void fragment() {
 	const float div = 1.0/3.0;
 	float black_strength = ( base_color.r + base_color.g + base_color.b ) * div;
 	float white_strength = 1.0 - black_strength;
-	float base_strength = min( black_strength, white_strength );
+	float base_strength = min( black_strength, white_strength ) * 2.0;
 	
 	float strength = tint_strength * base_strength;
 	COLOR = vec4( mix( base_color.rgb, tint_color, strength ), base_color.a ) * modulate;

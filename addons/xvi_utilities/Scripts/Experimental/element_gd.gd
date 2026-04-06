@@ -110,7 +110,7 @@ func _get_property_list() -> Array[ Dictionary ]:
 	return properties;
 
 
-func get_strength_against( defending_element: ElementGD ) -> int:
+func get_strength_against( defending_element: _ElementGD ) -> int:
 	
 	var cache_key = make_cache_key( current_element, defending_element.current_element );
 	if ( _cache.has( cache_key ) ):
