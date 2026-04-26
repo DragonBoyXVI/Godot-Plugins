@@ -5,7 +5,7 @@ namespace DragonXVI;
 /// <summary>
 /// The base node for CSStates, to be used by a parent state machine.
 /// </summary>
-[GlobalClass, Icon("res://addons/xvi_utilities/Assets/Script Icons/state_node.atlastex")]
+[GlobalClass, Tool, Icon("res://addons/xvi_utilities/Assets/Script Icons/state_node.atlastex")]
 public abstract partial class StateCS : Node
 {
     /// <summary>
@@ -20,6 +20,17 @@ public abstract partial class StateCS : Node
     public void EmitRequestStateChange(StringName stateName)
     {
         EmitSignal(SignalName.StateChangeRequested, stateName);
+    }
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+        if (Engine.IsEditorHint())
+        {
+            XVIFuncs.DisableNodeProcesses(this);
+            return;
+        }
     }
 
     /// <summary>

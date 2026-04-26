@@ -2,7 +2,7 @@ namespace DragonXVI;
 
 /// <summary>
 /// Simple match based state machine wrapper.
-/// Also emits godot signals when the "state" is changed.
+/// Also emits events when the state changes.
 /// </summary>
 public class StateMachineLite<T>
 {

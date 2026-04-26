@@ -21,7 +21,7 @@ enum DrawFlag {
 	ANIALIASING = 1<<2,
 }
 
-
+@export_group( "Outline", "outline_" )
 ## How many pixels thick the outline is
 @export var outline_thickness: float = 3.0:
 	set( new ):
@@ -32,30 +32,37 @@ enum DrawFlag {
 @export var outline_color: Color = Color.BLACK:
 	set( new ):
 		
-		outline_color = new
-		queue_redraw()
+		outline_color = new;
+		queue_redraw();
+@export_group( "Center", "center_" )
 ## Color of the shape center
 @export var center_color: Color = Color.WHITE:
 	set( new ):
 		
-		center_color = new
-		queue_redraw()
+		center_color = new;
+		queue_redraw();
 ## Flags for what to draw.
-var draw_flags: DrawFlag = DrawFlag.OUTLINE | DrawFlag.CENTER:
+@export_flags( 
+	"Draw Outline", 
+	"Draw Center", 
+	"Antialiasing" ) var draw_flags: int = DrawFlag.OUTLINE | DrawFlag.CENTER:
 	set( new ):
 		
-		draw_flags = new
-		queue_redraw()
+		draw_flags = new;
+		notify_property_list_changed();
+		queue_redraw();
 
 
-func _get_property_list() -> Array[Dictionary]:
-	var properties: Array[ Dictionary ] = [];
+func _validate_property( property: Dictionary ) -> void:
+	const OUTLINE_NAMES: PackedStringArray = [
+		"outline_thickness",
+		"outline_color",
+	];
+	const CENTER_NAMES: PackedStringArray = [
+		"center_color",
+	];
 	
-	properties.append( {
-		Property.NAME: "draw_flags",
-		Property.TYPE: TYPE_INT,
-		Property.HINT: PROPERTY_HINT_FLAGS,
-		Property.HINT_STRING: "Draw Outline,Draw Center,Antialiasing",
-	} );
-	
-	return properties;
+	if (property[Property.NAME] in OUTLINE_NAMES):
+		if (not draw_flags & DrawFlag.OUTLINE): property[Property.USAGE] = PROPERTY_USAGE_NONE;
+	elif (property[Property.NAME] in CENTER_NAMES):
+		if (not draw_flags & DrawFlag.CENTER): property[Property.USAGE] = PROPERTY_USAGE_NONE;

@@ -41,7 +41,7 @@ public partial class StateMachineCS : Node
 
         if ( Engine.IsEditorHint() )
         {
-            XVIUtil.DisableNodeProcesses(this);
+            XVIFuncs.DisableNodeProcesses(this);
             return;
         }
 
