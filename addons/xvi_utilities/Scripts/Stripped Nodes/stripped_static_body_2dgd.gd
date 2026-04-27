@@ -16,6 +16,13 @@ func _init() -> void:
 	collision_mask = 0;
 	input_pickable = false;
 
+func _ready() -> void:
+
+	if ( Engine.is_editor_hint() ):
+
+		XVIFuncs.disable_node_processes( self );
+		return;
+
 func _validate_property( property: Dictionary ) -> void:
 	const DISABLED: PackedStringArray = [
 		"collision_layer",

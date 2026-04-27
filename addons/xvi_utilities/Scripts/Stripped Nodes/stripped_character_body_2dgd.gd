@@ -16,6 +16,13 @@ func _init() -> void:
 	collision_layer = 0;
 	collision_mask = 0;
 
+func _ready() -> void:
+
+	if ( Engine.is_editor_hint() ):
+
+		XVIFuncs.disable_node_processes( self );
+		return;
+
 func _validate_property( property: Dictionary ) -> void:
 	const DISABLED: PackedStringArray = [
 		"motion_mode",

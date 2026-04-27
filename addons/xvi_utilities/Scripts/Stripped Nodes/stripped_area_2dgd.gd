@@ -21,6 +21,13 @@ func _init() -> void:
 	if ( Engine.is_editor_hint() ):
 		child_entered_tree.connect( _on_child_entered_tree );
 
+func _ready() -> void:
+
+	if ( Engine.is_editor_hint() ):
+
+		XVIFuncs.disable_node_processes( self );
+		return;
+
 func _validate_property( property: Dictionary ) -> void:
 	const DISABLED: PackedStringArray = [
 		"monitoring",

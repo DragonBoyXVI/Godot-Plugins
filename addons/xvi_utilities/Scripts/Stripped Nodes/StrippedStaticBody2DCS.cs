@@ -23,6 +23,17 @@ public abstract partial class StrippedStaticBody2DCS : StaticBody2D, IStrippedPr
 		CollisionMask = 0;
 		InputPickable = false;
 	}
+
+    public override void _Ready()
+    {
+        base._Ready();
+
+		if (Engine.IsEditorHint())
+		{
+			XVIFuncs.DisableNodeProcesses(this);
+			return;
+		}
+    }
 	
 	public override void _ValidateProperty(Dictionary property)
 	{

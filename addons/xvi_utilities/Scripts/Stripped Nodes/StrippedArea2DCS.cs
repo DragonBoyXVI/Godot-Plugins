@@ -30,6 +30,17 @@ public abstract partial class StrippedArea2DCS : Area2D, IStrippedProperties
 		}
 	}
 
+    public override void _Ready()
+    {
+        base._Ready();
+
+		if (Engine.IsEditorHint())
+		{
+			XVIFuncs.DisableNodeProcesses(this);
+			return;
+		}
+    }
+
 	public override void _ValidateProperty(Dictionary property)
 	{
 		base._ValidateProperty(property);

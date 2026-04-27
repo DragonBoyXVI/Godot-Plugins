@@ -21,6 +21,17 @@ public abstract partial class StrippedCharacterBody2DCS : CharacterBody2D, IStri
 		CollisionMask = 0;
 	}
 
+    public override void _Ready()
+    {
+        base._Ready();
+
+		if (Engine.IsEditorHint())
+		{
+			XVIFuncs.DisableNodeProcesses(this);
+			return;
+		}
+    }
+
 	public override void _ValidateProperty(Dictionary property)
 	{
 		base._ValidateProperty(property);
