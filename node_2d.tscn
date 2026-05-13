@@ -5,6 +5,8 @@
 [ext_resource type="Shader" uid="uid://bit1t22ciih3f" path="res://addons/xvi_utilities/Assets/Shaders/palette_canvas_group.gdshader" id="2_epypp"]
 [ext_resource type="Shader" uid="uid://i70wcdmyjgo" path="res://addons/xvi_utilities/Assets/Shaders/palette_on_grayscale.gdshader" id="3_epypp"]
 [ext_resource type="Shader" uid="uid://bi2taa4hnunqs" path="res://addons/xvi_utilities/Assets/Shaders/canvas_animation.gdshader" id="3_kdubu"]
+[ext_resource type="Shader" uid="uid://c8e8mg5qbcny2" path="res://addons/xvi_utilities/Assets/Shaders/monocolor.gdshader" id="6_kdubu"]
+[ext_resource type="Shader" uid="uid://c7iuqtidemgvl" path="res://addons/xvi_utilities/Assets/Shaders/blend_hue.gdshader" id="7_d21ai"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d21ai"]
 shader = ExtResource("3_kdubu")
@@ -46,15 +48,26 @@ noise = SubResource("FastNoiseLite_d21ai")
 shader = ExtResource("3_epypp")
 shader_parameter/palette_texture = SubResource("GradientTexture1D_q6r6c")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4d7sh"]
+shader = ExtResource("6_kdubu")
+shader_parameter/target_color = Color(1, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rj586"]
+shader = ExtResource("7_d21ai")
+shader_parameter/tint_color = Color(1, 0, 0, 1)
+shader_parameter/tint_strength = 1.0
+
 [node name="Node2D" type="Node2D" unique_id=616449960]
 script = ExtResource("1_0hol4")
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=698132530]
+visible = false
 material = SubResource("ShaderMaterial_d21ai")
 position = Vector2(290, -149)
 texture = ExtResource("1_0e48y")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="." unique_id=1939766673]
+visible = false
 material = SubResource("ShaderMaterial_0hol4")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasGroup" unique_id=1228136070]
@@ -66,6 +79,7 @@ position = Vector2(516, -56)
 texture = SubResource("NoiseTexture2D_rj586")
 
 [node name="CanvasGroup2" type="CanvasGroup" parent="." unique_id=273291699]
+visible = false
 position = Vector2(728, 124)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasGroup2" unique_id=2098351430]
@@ -78,6 +92,11 @@ position = Vector2(516, -56)
 texture = SubResource("NoiseTexture2D_rj586")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=541025998]
-material = SubResource("ShaderMaterial_d21ai")
+material = SubResource("ShaderMaterial_4d7sh")
 position = Vector2(173, 220)
+texture = ExtResource("1_0e48y")
+
+[node name="Sprite2D3" type="Sprite2D" parent="." unique_id=1088827261]
+material = SubResource("ShaderMaterial_rj586")
+position = Vector2(310, 221)
 texture = ExtResource("1_0e48y")
