@@ -1,6 +1,10 @@
 extends Node2D
 
 
+func _ready() -> void:
+	
+	TranslationImporter.parse_dir_for_files( "res://Test Trans Top/" );
+
 
 func _test():
 	pass

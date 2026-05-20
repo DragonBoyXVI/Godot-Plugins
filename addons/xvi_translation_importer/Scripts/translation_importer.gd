@@ -89,3 +89,34 @@ func parse_dict_to_translation( translation_dict: Dictionary ) -> Translation:
 	TranslationServer.add_translation( translation )
 	_extra_data[ locale ] = extra
 	return translation
+
+## Searches the directory for translation jsons, and sends
+## any that it finds into parse_file_for_dict.[br]
+## By default, this recursivley searches all subfolders within a dir.
+func parse_dir_for_files( dir_path: String, search_subdirs: bool = true ) -> void:
+	
+	if ( dir_path[ dir_path.length() - 1 ] == "/" ):
+		dir_path[ dir_path.length() - 1 ] = "";
+		# beutiful.,.,
+	
+	if ( not DirAccess.dir_exists_absolute( dir_path ) ):
+		push_error( "Trying to parse a non existant folder! ", dir_path );
+		return;
+	
+	var dir := DirAccess.open( dir_path );
+	if ( not dir ):
+		push_error( "Failed to open folder: ", error_string( DirAccess.get_open_error() ) );
+		return;
+	
+	dir.list_dir_begin();
+	var file_name := dir.get_next();
+	while not file_name.is_empty():
+		
+		if ( dir.current_is_dir() ):
+			parse_dir_for_files( dir.get_current_dir() + "/" + file_name );
+		else:
+			parse_file_for_dict( dir.get_current_dir() + "/" + file_name );
+		
+		print( dir.get_current_dir() + "/" + file_name );
+		
+		file_name = dir.get_next();
