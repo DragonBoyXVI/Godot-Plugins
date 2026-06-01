@@ -12,6 +12,7 @@ namespace DragonXVI;
 [GlobalClass,Tool]
 public abstract partial class StrippedArea2DCS : Area2D, IStrippedProperties
 {
+
     static StrippedArea2DCS()
 	{
 		strippedPropertyList = GetStrippedProperties();
