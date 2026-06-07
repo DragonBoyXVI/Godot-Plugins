@@ -1,5 +1,7 @@
-extends Node
-
+@abstract
+@tool
+extends Object;
+class_name TranslationImporter;
 
 ## The key checked for what locale the translation belongs to.
 const LOCALE_CHECK := "locale"
@@ -7,14 +9,14 @@ const LOCALE_CHECK := "locale"
 
 ## Contains extra translation data.
 ## eg. An array of text you can randomly pick from.
-var _extra_data: Dictionary[ String, Dictionary ] = {}
+static var _extra_data: Dictionary[ String, Dictionary ] = {}
 
 
 ## This node stores any extra data that cant be stored in a translation.
 ## For example, your json can contain an array of strings, and this will
 ## store that here for you to grab later.
 ## Can return null if the extra data doesnt exist.
-func get_extra_data( key: String, locale: String = TranslationServer.get_locale() ) -> Variant:
+static func get_extra_data( key: String, locale: String = TranslationServer.get_locale() ) -> Variant:
 	
 	if ( not _extra_data.has( locale ) ):
 		push_error( "Getting extra data for a locale we dont have! ", locale )
@@ -32,7 +34,7 @@ func get_extra_data( key: String, locale: String = TranslationServer.get_locale(
 ## if the file is a json that contains a valid dictionary, it gets parsed
 ## as a translation. Otherwise an error is printed and nothing happens.
 ## The dictionary is parsed via "parse_dict_to_translation"
-func parse_file_for_dict( path: String ) -> void:
+static func parse_file_for_dict( path: String ) -> void:
 	
 	if ( not FileAccess.file_exists( path ) ):
 		push_error( "Trying to translate a file that doesnt exist! ", path )
@@ -62,7 +64,7 @@ func parse_file_for_dict( path: String ) -> void:
 ## NOTE: If this defines extra data that is already defined for that language,
 ## it will be overwritten by the most recent parse.[br]
 ## If the dict is invalid, nothing happens and an error is printed.
-func parse_dict_to_translation( translation_dict: Dictionary ) -> Translation:
+static func parse_dict_to_translation( translation_dict: Dictionary ) -> Translation:
 	
 	if ( not translation_dict.has( LOCALE_CHECK ) ):
 		push_error( "Translation dict does not contain a locale key! Translations must have a \"", LOCALE_CHECK, "\" key." )
@@ -93,7 +95,7 @@ func parse_dict_to_translation( translation_dict: Dictionary ) -> Translation:
 ## Searches the directory for translation jsons, and sends
 ## any that it finds into parse_file_for_dict.[br]
 ## By default, this recursivley searches all subfolders within a dir.
-func parse_dir_for_files( dir_path: String, search_subdirs: bool = true ) -> void:
+static func parse_dir_for_files( dir_path: String, search_subdirs: bool = true ) -> void:
 	
 	if ( dir_path[ dir_path.length() - 1 ] == "/" ):
 		dir_path[ dir_path.length() - 1 ] = "";

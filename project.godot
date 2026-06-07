@@ -19,10 +19,6 @@ run/main_scene="uid://brx863q7ph81p"
 config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
-[autoload]
-
-TranslationImporter="*uid://b8q3rdqpipl7p"
-
 [dotnet]
 
 project/assembly_name="Godot Plugins"
