@@ -1,8 +1,13 @@
 # DragonXVI's Godot Plugins
 
+
 This is a repository for all the plugins i've made.
 Everything here is fully public and free to use, or modify to the license specs.
 
+# NOTE!
+
+Ive decided to clean up this repository by seperating the csharp and gdscript
+scripts. The Assets will be shared between the two.
 
 ## XVI Utility
 
